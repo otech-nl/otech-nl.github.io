@@ -1,0 +1,19 @@
+#+title: Referenties
+#+date: <2018-09-27 10:10>
+#+filetags:
+#+STARTUP: showall indent
+
+** Partners
+
+- SEY
+- Softwareborg
+- Probatius
+
+** Opdrachtgevers
+
+- OVBGD
+- Provincie Groningen
+- Gemeente Groningen
+- FLAL
+- SoberCare
+- INLIA

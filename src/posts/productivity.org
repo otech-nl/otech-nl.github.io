@@ -1,0 +1,8 @@
+#+title: Productivity
+#+date: <2018-1-5 14:43>
+#+filetags: technote
+#+STARTUP: showall indent
+
+
+  [[./img/GTD-workflow.png]]
+([[file:./img/GTD-advanced workflow.png][Advanced]])

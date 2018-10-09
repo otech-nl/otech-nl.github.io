@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>Virtual development environments with Vagrant</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <div class="menu">
+    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
+    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+  </div>
+</div>
+</div>
+<div id="content">
+<hr/><div class="post-date">30 Oct 2017</div><h1 class="post-title"><a href="vagrant.html">Virtual development environments with Vagrant</a></h1>
+<p>
+Python's <a href="python.html">virtual environments</a> are a blessing, but as they manage Python dependencies only, they are also limited.
+</p>
+
+<p>
+For example, I use <a href="https://www.sqlite.org/">sqlite</a> for most of my projects, but in some cases, I need something else, like a more sophisticated SQL database (e.g. <a href="https://mariadb.org/">MariaDB</a>) or a no-SQL database (e.g. <a href="https://www.mongodb.com/">MongoDB</a>). In situations like that, I use <a href="https://www.vagrantup.com/">Vagrant</a>:
+</p>
+
+<blockquote>
+<p>
+Vagrant provides easy to configure, reproducible, and portable work environments built on top of industry-standard technology and controlled by a single consistent workflow to help maximize the productivity and flexibility of you and your team.
+</p>
+</blockquote>
+
+<p>
+What this means is that with Vagrant I can specify all my project's dependencies in configuration files and scripts. This keeps my projects nicely separated and allows me to reproduce my project's environment at will (this process is called <i>provisioning</i>). I can even use this provisioning to transfer the project to a different environment (e.g. from development to test) and to other developers.
+</p>
+
+<p>
+If you want to get Vagrant up and running, the <a href="https://www.vagrantup.com/intro/getting-started/index.html">Getting Started</a> section provides a good introduction. For a more beginner-friendly tutorial, head to <a href="https://scotch.io/tutorials/get-vagrant-up-and-running-in-no-time">Scotch.io</a> instead. If you want to skip all that, just go to the <a href="https://www.vagrantup.com/docs/">official documentation</a> or to the <a href="https://www.jetbrains.com/help/pycharm/using-the-advanced-vagrant-features-in-product.html">PyCharm Vagrant page</a> if that's your IDE of choice.
+</p>
+
+<p>
+In short, Vagrant is about provisioning a virtual machine with all the assets you need for your project. There are many provisioners to choose from to help you with that, like <a href="https://www.ansible.com/">Ansible</a>, <a href="https://puppet.com/">Puppet</a> and <a href="https://www.chef.io/">Chef</a>. But I prefer vanilla bash provisioning, because I am already familiar with bash and would have to learn any of the other provisioners. In other words, my needs are not complex enough to warrant the time needed to learn a more advanced provisioner. And, to be honest, I found their learning curve rather steep.
+</p>
+
+<p>
+To make my life (and maybe yours) a little easier, I wrote some basic scaffolding which is available <a href="https://github.com/otech-nl/vagrant-lemp">here</a>.
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
+</div>
+</body>
+</html>

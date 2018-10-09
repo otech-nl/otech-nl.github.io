@@ -1,0 +1,22 @@
+#+title: Welkom bij OTech
+#+date: <2018-09-27 10:10>
+#+filetags:
+#+STARTUP: showall indent
+
+* ICT is een ambacht
+
+Ik ben nuchter, all-round en sensitief ICT-er, en bijt me graag vast in complexe vraagstukken. Hierbij krijgen zowel de organisatorische als de technische aspecten de aandacht die ze verdienen. Mijn aanpak kenmerkt zich door resultaatgerichtheid, realistische ambitie en transparantie. Hierbij streef ik naar concreet bruikbare en toekomstvaste resultaten.
+
+* Vakkundig en veelzijdig
+Sinds 2005 voer ik opdrachten uit in de volgende gebieden:
+
+- projecten: projectleider, analist, ontwikkelaar
+- ondersteuning van juristen: broncodeinspectie, ESCROW, bewijsbeslag
+- trainingen: softwareprojecten, -ontwikkeling en -testen
+
+* Open en betrokken
+In mijn opdrachten hanteer ik de volgende uitgangspunten:
+
+- Open communicatie, zodat u weet wat u aan mij heeft.
+- Techniek dient de mens. Ik gebruik daarom de tools die het beste passen in uw specifieke situatie.
+- Niet alles is vooraf te voorzien. Bijstellen is dus altijd mogelijk.

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>Emacs</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <div class="menu">
+    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
+    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+  </div>
+</div>
+</div>
+<div id="content">
+<hr/><div class="post-date">21 Oct 2017</div><h1 class="post-title"><a href="emacs.html">Emacs</a></h1>
+<p>
+<a href="https://www.gnu.org/software/emacs/">Home</a> | <a href="http://ergoemacs.org/">ErgoEmacs</a>
+</p>
+
+<p>
+I use <a href="https://github.com/bbatsov/prelude">Prelude Emacs</a> with minimal <a href="https://github.com/otech-nl/prelude">customisation</a>.
+</p>
+
+<div id="outline-container-org485282c" class="outline-2">
+<h2 id="org485282c">Keymaps</h2>
+<div class="outline-text-2" id="text-org485282c">
+</div>
+<div id="outline-container-org7f81329" class="outline-3">
+<h3 id="org7f81329">Emacs standard</h3>
+<div class="outline-text-3" id="text-org7f81329">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-^</td>
+<td class="org-left">Join with next line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-_</td>
+<td class="org-left">Undo</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c d</td>
+<td class="org-left">Duplicate line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-g</td>
+<td class="org-left">Abort operation</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 1</td>
+<td class="org-left">Focus window</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 2</td>
+<td class="org-left">Split window horizontally</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 3</td>
+<td class="org-left">Split window vertically</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-f</td>
+<td class="org-left">Find file (open into buffer)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-s</td>
+<td class="org-left">Save buffer to file</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-w</td>
+<td class="org-left">Save buffer to file as &#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x b</td>
+<td class="org-left">Go to other buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x d</td>
+<td class="org-left">Edit directory</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x e</td>
+<td class="org-left">Execute elisp under cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x o</td>
+<td class="org-left">Go to other window</td>
+</tr>
+
+<tr>
+<td class="org-left">M-f / M-b</td>
+<td class="org-left">Move word forward / backward</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgdd1c5fb" class="outline-3">
+<h3 id="orgdd1c5fb">Prelude</h3>
+<div class="outline-text-3" id="text-orgdd1c5fb">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c c</td>
+<td class="org-left">Clean buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c d</td>
+<td class="org-left">Duplicate line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c s</td>
+<td class="org-left">Swap windows</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgfe2b952" class="outline-3">
+<h3 id="orgfe2b952">Custom</h3>
+<div class="outline-text-3" id="text-orgfe2b952">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c /</td>
+<td class="org-left">Toggle region comment</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c j</td>
+<td class="org-left">Join lines</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c l</td>
+<td class="org-left">List packages</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x k</td>
+<td class="org-left">Kill buffer <i>immediately</i> (no confirmation)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
+</div>
+</body>
+</html>

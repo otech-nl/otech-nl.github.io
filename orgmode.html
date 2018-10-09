@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>Org-mode cheat sheet</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <div class="menu">
+    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
+    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+  </div>
+</div>
+</div>
+<div id="content">
+<hr/><div class="post-date">25 Sep 2018</div><h1 class="post-title"><a href="orgmode.html">Org-mode cheat sheet</a></h1>
+<p>
+<a href="https://orgmode.org/manual/">Manual</a> | <a href="https://orgmode.org/orgcard.pdf">RefCard</a> | <a href="https://orgmode.org/worg/org-tutorials/org4beginners.html">Org4Beginners</a> | <a href="https://orgmode.org/worg/org-glossary.html">Glossary</a> | <a href="http://ehneilsen.net/notebook/orgExamples/org-examples.html">Cookbook</a> | <a href="http://thagomizer.com/blog/2017/03/16/five-useful-org-mode-features.html">5 useful features</a>
+</p>
+
+<div id="outline-container-orgd05c397" class="outline-2">
+<h2 id="orgd05c397">Markup: <b>bold</b>, <i>italic</i>, <span class="underline">underlined</span>, <del>strikethrough</del>, , <code>verbatim</code>, <code>code</code></h2>
+<div class="outline-text-2" id="text-orgd05c397">
+<ul class="org-ul">
+<li>list
+<ul class="org-ul">
+<li>other list
+<ul class="org-ul">
+<li>Numbered list</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org20a2ce3" class="outline-2">
+<h2 id="org20a2ce3">Links<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>: <a href="http://otech.nl">http://otech.nl</a>, <a href="http://otech.nl">OTech</a>, <img src="http://otech.nl/img/otech.jpg" alt="otech.jpg"></h2>
+</div>
+
+<div id="outline-container-org1fe6a2a" class="outline-2">
+<h2 id="org1fe6a2a">Cycle to do items with S-LEFT and S-RIGHT</h2>
+</div>
+
+<div id="outline-container-orgfcb8fb7" class="outline-2">
+<h2 id="orgfcb8fb7">Table and keys</h2>
+<div class="outline-text-2" id="text-orgfcb8fb7">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">context</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-RET</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">New headline</td>
+</tr>
+
+<tr>
+<td class="org-left">TAB / S-TAB</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Fold / Unfold</td>
+</tr>
+
+<tr>
+<td class="org-left">M-RIGHT / M-LEFT</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Promote / Demote</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">table</td>
+<td class="org-left">Move column</td>
+</tr>
+
+<tr>
+<td class="org-left">M-UP / M-DOWN</td>
+<td class="org-left">table</td>
+<td class="org-left">Move row</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-DOWN</td>
+<td class="org-left">table</td>
+<td class="org-left">Insert row (?)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c RET</td>
+<td class="org-left">table</td>
+<td class="org-left">Insert horizontal line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ^</td>
+<td class="org-left">table</td>
+<td class="org-left">Sort lines</td>
+</tr>
+
+<tr>
+<td class="org-left">S-RIGHT / S-LEFT</td>
+<td class="org-left">task</td>
+<td class="org-left">Cycle workflow</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">list</td>
+<td class="org-left">Cycle bullet type</td>
+</tr>
+
+<tr>
+<td class="org-left">S-UP / S-DOWN</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Cycle priority</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-e</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Export menu</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c a</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Agenda</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">heading</td>
+<td class="org-left">edit tags</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">on top</td>
+<td class="org-left">refresh local setup</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c '</td>
+<td class="org-left">code block</td>
+<td class="org-left">edit in native mode</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Toggle COMMENT of subtree</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2a4f57e" class="outline-2">
+<h2 id="org2a4f57e">Literal examples</h2>
+<div class="outline-text-2" id="text-org2a4f57e">
+<pre class="example">
+Some example from a text file.
+</pre>
+
+<p>
+Also available: <code>VERSE</code>, <code>QUOTE</code> and <code>CENTER</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4cbd4b8" class="outline-2">
+<h2 id="org4cbd4b8">Source code blocks</h2>
+<div class="outline-text-2" id="text-org4cbd4b8">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">org-xor</span> <span style="color: #BFEBBF;">(</span>a b<span style="color: #BFEBBF;">)</span>
+  <span style="color: #9FC59F;">"Exclusive or."</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> a <span style="color: #D0BF8F;">(</span>not b<span style="color: #D0BF8F;">)</span> b<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
+
+<p>
+Use <a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-ditaa.html">Ditaa</a> for figures.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">Show markup by removing the last (hidden) symbol of the link</div></div>
+
+
+</div>
+</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
+</div>
+</body>
+</html>

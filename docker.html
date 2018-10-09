@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>Docker</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <div class="menu">
+    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
+    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+  </div>
+</div>
+</div>
+<div id="content">
+<hr/><div class="post-date">29 Sep 2018</div><h1 class="post-title"><a href="docker.html">Docker</a></h1>
+<p>
+<a href="https://docs.docker.com/">Docs</a> | <a href="https://github.com/dimonomid/docker-quick-ref/releases/download/latest/docker-quick-ref.pdf">QuickRef</a> | <a href="https://dockerlux.github.io/pdf/cheat-sheet-v2.pdf">Cheatsheet</a>
+</p>
+
+<p>
+Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&lt;command&gt;</code> (e.g. <code>man docker-run</code>).
+</p>
+
+<div id="outline-container-org914c8d2" class="outline-2">
+<h2 id="org914c8d2">Concepts:</h2>
+<div class="outline-text-2" id="text-org914c8d2">
+<ul class="org-ul">
+<li>Major components:
+<ul class="org-ul">
+<li>A <b>server/daemon</b> which
+<ul class="org-ul">
+<li>manages docker objects, such as images, containers, network and data volumes</li>
+<li>has a REST API</li>
+<li>and a CLI (which uses the REST API)</li>
+</ul></li>
+<li>A <b>client</b> which is the primary way to interact with Docker.</li>
+<li>A <b>registry</b> (e.g. Docker Hub) that stores images</li>
+</ul></li>
+<li>App hierarchy:
+<ul class="org-ul">
+<li><b>Stack</b></li>
+<li><b>Service</b>: a container from a <code>docker-compose</code> file</li>
+<li><b>Container</b>:
+<ul class="org-ul">
+<li>When stopped: a runnable instance of an image</li>
+<li>When started: a running image (i.e. image + state)</li>
+<li>may be connected to a network and/or storage</li>
+<li>can be stored as an image</li>
+</ul></li>
+<li><b>Image</b>:
+<ul class="org-ul">
+<li>A read-only template with instructions for creating a Docker container</li>
+<li>an executable package</li>
+<li>may be based on another image</li>
+</ul></li>
+</ul></li>
+<li>Files:
+<ul class="org-ul">
+<li>A <b>Dockerfile</b> defines an image</li>
+<li>A <b>docker-compose.yml</b> defines one or more containers (a.k.a. <i>services</i>) that work together</li>
+</ul></li>
+<li>Tips:
+<ul class="org-ul">
+<li>You <code>start</code> a container (after it has been stopped) and <code>run</code> an image (which creates and starts a container).</li>
+<li>​Docker services can address each other through their container names as host name.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga316fc4" class="outline-2">
+<h2 id="orga316fc4">Basic docker commands</h2>
+<div class="outline-text-2" id="text-orga316fc4">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command (docker &#x2026;)</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>build -t friendlyhello .</code></td>
+<td class="org-left">Create image using this directory's Dockerfile</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>run -p 4000:80 friendlyhello</code></td>
+<td class="org-left">Run "friendlyname" mapping port 4000 to 80</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>run -d -p 4000:80 friendlyhello</code></td>
+<td class="org-left">Same thing, but in detached mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container ls</code></td>
+<td class="org-left">List all running containers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container ls -a</code></td>
+<td class="org-left">List all containers, even those not running</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container stop &lt;hash&gt;</code></td>
+<td class="org-left">Gracefully stop the specified container</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container kill &lt;hash&gt;</code></td>
+<td class="org-left">Force shutdown of the specified container</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container rm &lt;hash&gt;</code></td>
+<td class="org-left">Remove specified container from this machine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container rm $(docker container ls -a -q)</code></td>
+<td class="org-left">Remove all containers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>image ls -a</code></td>
+<td class="org-left">List all images on this machine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>image rm &lt;image id&gt;</code></td>
+<td class="org-left">Remove specified image from this machine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>image rm $(docker image ls -a -q)</code></td>
+<td class="org-left">Remove all images from this machine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>login</code></td>
+<td class="org-left">Log in this CLI session using your Docker credentials</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tag &lt;image&gt; username/repository:tag</code></td>
+<td class="org-left">Tag &lt;image&gt; for upload to registry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>push username/repository:tag</code></td>
+<td class="org-left">Upload tagged image to registry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>run username/repository:tag</code></td>
+<td class="org-left">Run image from a registry</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+(<a href="https://docs.docker.com/get-started/part2/#conclusion-of-part-two">src</a>)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3275b2a" class="outline-2">
+<h2 id="org3275b2a">More advanced docker commands</h2>
+<div class="outline-text-2" id="text-org3275b2a">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command (docker &#x2026;)</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>volume rm $(docker volume ls)</code></td>
+<td class="org-left">Remove all named volumes</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>exec -i -t container_name /bin/bash</code></td>
+<td class="org-left">Open a terminal</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>system prune</code></td>
+<td class="org-left">WARNING: use with caution</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org9a9405b" class="outline-3">
+<h3 id="org9a9405b">docker-compose</h3>
+<div class="outline-text-3" id="text-org9a9405b">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command (<code>docker-compose ...</code>)</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>exec &lt;container_name&gt; bash</code></td>
+<td class="org-left">run command <code>bash</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-f &lt;file&gt; up</code></td>
+<td class="org-left">start from a custom file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>down --volumes</code></td>
+<td class="org-left">also remove volumes attached to the container</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
+</div>
+</body>
+</html>

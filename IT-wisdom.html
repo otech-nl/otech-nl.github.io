@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>IT wisdom</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <div class="menu">
+    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
+    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+  </div>
+</div>
+</div>
+<div id="content">
+<hr/><div class="post-date">08 Sep 2017</div><h1 class="post-title"><a href="IT-wisdom.html">IT wisdom</a></h1>
+
+<div id="outline-container-org4f02f21" class="outline-2">
+<h2 id="org4f02f21">Code / design</h2>
+<div class="outline-text-2" id="text-org4f02f21">
+<p>
+<span class="underline">Good software</span> [<a href="https://martinfowler.com/bliki/BeckDesignRules.html">Beck</a>]:
+</p>
+<ol class="org-ol">
+<li><b>Passes the tests</b></li>
+<li><b>Reveals intention</b>
+<ul class="org-ul">
+<li>I will contend that <i>Conceptual Integrity</i> is the most important consideration in system design. It is better to have a system omit certain anomalous features and improvements, but to reflect one set of design ideas, than to have one that contains many good but independent and uncoordinated ideas. [<a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">Brooks</a>]</li>
+<li>Simplicity and clarity —in short: what mathematicians call "<i>elegance</i>"— are not a dispensable luxury, but a crucial matter that decides between success and failure [<a href="http://www.cs.utexas.edu/users/EWD/">Dijkstra</a>]</li>
+<li><i>Convention</i> over configuration</li>
+<li>Separation of Concerns</li>
+<li>Maximum coherence, minimum dependency</li>
+</ul></li>
+<li><b>No duplication</b>
+<ul class="org-ul">
+<li>Don’t Repeat Yourself (DRY)</li>
+<li>Single Point of Truth (SPOT)</li>
+</ul></li>
+<li><b>Fewest elements</b>
+<ul class="org-ul">
+<li>A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away. [<a href="https://en.wikipedia.org/wiki/Antoine_de_Saint-Exup%C3%A9ry">Antoine de Saint-Exupéry</a>]</li>
+<li>Less is More</li>
+<li>Occam's razor: the simplest option is usually correct</li>
+<li>Keep It Small and Simple (KISS) until proven complex</li>
+<li>Make everything as simple as possible, but not simpler [Einstein]</li>
+<li>Measuring programming progress by lines of code is like measuring aircraft building progress by weight. [Gates]</li>
+</ul></li>
+</ol>
+
+<p>
+Snippets:
+</p>
+<ul class="org-ul">
+<li>From the <a href="https://en.wikipedia.org/wiki/Design_Patterns">Gang of Four</a>:
+<ul class="org-ul">
+<li>Program to an <i>interface</i>, not an implementation</li>
+<li>Favor object <i>composition</i> over class inheritance</li>
+</ul></li>
+<li>Algemene namen:
+<ul class="org-ul">
+<li>Foo, bar</li>
+<li>Alice, Bob, Carol &amp; Dave</li>
+</ul></li>
+<li>Make the change easy. Then make the easy change.</li>
+<li>Technology develops from the primitive via the complex to the simple. [<a href="https://en.wikipedia.org/wiki/Antoine_de_Saint-Exup%C3%A9ry">Antoine de Saint-Exupéry</a>]</li>
+<li>Command Query Separation: Functions that change state should not return values and functions that return values should not change state.</li>
+<li><a href="https://hackernoon.com/object-oriented-tricks-3-death-by-arguments-d070ac86d996">Death by Arguments</a></li>
+<li><a href="https://www.refactoring.com/catalog/">Refactoring Catalog</a></li>
+<li><a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">Principles of OOD</a>:
+<ul class="org-ul">
+<li>Class design:
+<ul class="org-ul">
+<li>SRP (Single Responsibility Principle): A class should have one, and only one, reason to change.</li>
+<li>OCP (Open Closed Principle): You should be able to extend a classes behavior, without modifying it.</li>
+<li>LSP (Liskov Substitution Principle): Derived classes must be substitutable for their base classes.</li>
+<li>ISP (Interface Segregation Principle): Make fine grained interfaces that are client specific.</li>
+<li>DIP (Dependency Inversion Principle): Depend on abstractions, not on concretions.</li>
+</ul></li>
+<li>Package<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> cohesion (what to put inside packages):
+<ul class="org-ul">
+<li>REP (Release Reuse Equivalency Principle): The granule of reuse is the granule of release.</li>
+<li>CCP (Common Closure Principle): Classes that change together are packaged together.</li>
+<li>CRP (Common Reuse Principle): Classes that are used together are packaged together.</li>
+</ul></li>
+<li>package couplings (metrics that evaluate the package structure of a system):
+<ul class="org-ul">
+<li>ADP (Acyclic Dependencies Principle): The dependency graph of packages must have no cycles.</li>
+<li>SDP (Stable Dependencies Principle): Depend in the direction of stability.</li>
+<li>SAP (Stable Abstractions Principle): Abstractness increases with stability.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgc5853c3" class="outline-2">
+<h2 id="orgc5853c3">Projects / management</h2>
+<div class="outline-text-2" id="text-orgc5853c3">
+<p>
+About IT:
+</p>
+<ul class="org-ul">
+<li>IT connects people and systems</li>
+<li>IT is a craft</li>
+<li>IT is human labour</li>
+</ul>
+
+<p>
+Snippets:
+</p>
+<ul class="org-ul">
+<li>Deploy Early and Often (DEO) / Release Early, Release Often (RERO)</li>
+<li>Problem vs Work</li>
+<li>Realistische ambitie</li>
+<li><span class="underline">Pareto principle</span>: 20/80% rule</li>
+<li>Lacking quality, rules abound.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3b9654c" class="outline-2">
+<h2 id="org3b9654c">Aphorisms</h2>
+<div class="outline-text-2" id="text-org3b9654c">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><span class="underline">Brooks's Law</span></td>
+<td class="org-left">Adding manpower to a late software project makes it later</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Clarke's third law</span></td>
+<td class="org-left">Any sufficiently advanced technology is indistinguishable from magic.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Reverse</span></td>
+<td class="org-left">any technology that is not like magic, is insufficiently advanced</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Conway's Law</span></td>
+<td class="org-left">organizations which design systems are constrained to produce designs</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">which are copies of the communication structures of these organizations</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://javadevguy.wordpress.com/2017/05/14/the-genius-of-the-law-of-demeter/">Law of Demeter</a></td>
+<td class="org-left">For all classes C, and for all methods M attached to C, all objects to which M sends a</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">message must be M’s argument objects (including the self object)</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Hanlon's razor</span></td>
+<td class="org-left">Never attribute to malice that which is adequately explained by stupidity.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Hofstadter's Law</span></td>
+<td class="org-left">It always takes longer than you expect, even when you take into account Hofstadter's Law.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Murphy's law</span></td>
+<td class="org-left">Anything that can go wrong, will go wrong.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Finagle's corollary</span></td>
+<td class="org-left">&#x2026;at the worst possible moment.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Muphry’s law</span></td>
+<td class="org-left">Any correction will introduce new errors.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Parkinson's law</span></td>
+<td class="org-left">work expands so as to fill the time available for its completion</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Peter principle</span></td>
+<td class="org-left">managers rise to the level of their incompetence</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4bf5c37" class="outline-2">
+<h2 id="org4bf5c37">Abbrs</h2>
+<div class="outline-text-2" id="text-org4bf5c37">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">​REPL</td>
+<td class="org-left">Read Evaluate Print Loop</td>
+</tr>
+
+<tr>
+<td class="org-left">TL;DR</td>
+<td class="org-left">Too Long, Didn't Read</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">binary deliverable</div></div>
+
+
+</div>
+</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
+</div>
+</body>
+</html>

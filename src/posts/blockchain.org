@@ -1,0 +1,11 @@
+#+title: Blockchain
+#+date: <2018-6-22 18:52>
+#+filetags: technote
+#+STARTUP: showall indent
+
+* Key concepts
+
+  - Chain of immutable blocks (though hashes)
+  - Public, distributed replication (through peer to peer - p2p)
+  - Decentralized, trustless consensus (by collective self-interest)
+  - Forks are resolved through scoring (resulting in orphan blocks)

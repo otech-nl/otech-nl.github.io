@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>Documentation</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <div class="menu">
+    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
+    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+  </div>
+</div>
+</div>
+<div id="content">
+<hr/><div class="post-date">11 Nov 2017</div><h1 class="post-title"><a href="documentation.html">Documentation</a></h1>
+<p>
+Clearly, <a href="http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructured Text</a> (reST) is the most Pythonic documentation format. And <a href="http://www.sphinx-doc.org/">Sphinx</a> is the generator to go with it.
+</p>
+
+<p>
+However, for most use cases, I find reST far too complicated and I prefer <a href="https://orgmode.org">Orgmode</a> (and sometimes <a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a>) for documentation.
+</p>
+
+<p>
+On occasion I use an <a href="http://markup.su/highlighter">Online Syntax Highlighter</a> to format source code.
+</p>
+
+<div id="outline-container-orgd3d9e99" class="outline-2">
+<h2 id="orgd3d9e99">Nikola</h2>
+<div class="outline-text-2" id="text-orgd3d9e99">
+<p>
+I sometimes blog with Markdown-files and publish it with static site generator <a href="http://getnikola.com">Nikola</a>. While writing I can check the live result with the <code>nikola auto</code> command.
+</p>
+
+<p>
+One of the lesser known features of Nikola are <a href="https://getnikola.com/handbook.html">shortcodes</a>: simple snippets that you can use throughout your blog. They come in the varieties built-in, community-provided, and home-made. The simplest way to roll your own is by using templates in the <code>shortcodes</code> directory. For example, I have defined a <code>shortcodes/attention.tmpl</code> that gives me <code>{{% attention %}}</code> whenever I want it.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
+</div>
+</body>
+</html>

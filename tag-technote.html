@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>OTech BV</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status"><div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <div class="menu">
+    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
+    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+  </div>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Posts tagged "technote":</h1>
+<hr/><div class="post-date">29 Sep 2018</div><h1 class="post-title"><a href="docker.html">Docker</a></h1>
+<p>
+<a href="https://docs.docker.com/">Docs</a> | <a href="https://github.com/dimonomid/docker-quick-ref/releases/download/latest/docker-quick-ref.pdf">QuickRef</a> | <a href="https://dockerlux.github.io/pdf/cheat-sheet-v2.pdf">Cheatsheet</a>
+</p>
+
+<p>
+Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&lt;command&gt;</code> (e.g. <code>man docker-run</code>).
+</p>
+
+<div id="outline-container-org914c8d2" class="outline-2">
+<h2 id="org914c8d2">Concepts:</h2>
+<div class="outline-text-2" id="text-org914c8d2">
+<ul class="org-ul">
+<li>Major components:
+<ul class="org-ul">
+<li>A <b>server/daemon</b> which
+<ul class="org-ul">
+<li>manages docker objects, such as images, containers, network and data volumes</li>
+<li>has a REST API</li>
+<li>and a CLI (which uses the REST API)</li>
+</ul></li>
+<li>A <b>client</b> which is the primary way to interact with Docker.</li>
+<li>A <b>registry</b> (e.g. Docker Hub) that stores images</li>
+</ul></li>
+<li>App hierarchy:
+<ul class="org-ul">
+<li><b>Stack</b></li>
+<li><b>Service</b>: a container from a <code>docker-compose</code> file</li>
+<li><b>Container</b>:
+<ul class="org-ul">
+<li>When stopped: a runnable instance of an image</li>
+<li>When started: a running image (i.e. image + state)</li>
+<li>may be connected to a network and/or storage</li>
+<li>can be stored as an image</li>
+</ul></li>
+<li><b>Image</b>:
+<ul class="org-ul">
+<li>A read-only template with instructions for creating a Docker container</li>
+<li>an executable package</li>
+<li>may be based on another image</li>
+</ul></li>
+</ul></li>
+<li>Files:
+<ul class="org-ul">
+<li>A <b>Dockerfile</b> defines an image</li>
+<li>A <b>docker-compose.yml</b> defines one or more containers (a.k.a. <i>services</i>) that work together</li>
+</ul></li>
+<li>Tips:
+<ul class="org-ul">
+<li>You <code>start</code> a container (after it has been stopped) and <code>run</code> an image (which creates and starts a container).</li>
+<li>​Docker services can address each other through their container names as host name.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga316fc4" class="outline-2">
+<h2 id="orga316fc4">Basic docker commands</h2>
+<div class="outline-text-2" id="text-orga316fc4">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command (docker &#x2026;)</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>build -t friendlyhello .</code></td>
+<td class="org-left">Create image using this directory's Dockerfile</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>run -p 4000:80 friendlyhello</code></td>
+<td class="org-left">Run "friendlyname" mapping port 4000 to 80</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>run -d -p 4000:80 friendlyhello</code></td>
+<td class="org-left">Same thing, but in detached mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container ls</code></td>
+<td class="org-left">List all running containers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container ls -a</code></td>
+<td class="org-left">List all containers, even those not running</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container stop &lt;hash&gt;</code></td>
+<td class="org-left">Gracefully stop the specified container</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container kill &lt;hash&gt;</code></td>
+<td class="org-left">Force shutdown of the specified container</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container rm &lt;hash&gt;</code></td>
+<td class="org-left">Remove specified container from this machine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>container rm $(docker container ls -a -q)</code></td>
+<td class="org-left">Remove all containers</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>image ls -a</code></td>
+<td class="org-left">List all images on this machine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>image rm &lt;image id&gt;</code></td>
+<td class="org-left">Remove specified image from this machine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>image rm $(docker image ls -a -q)</code></td>
+<td class="org-left">Remove all images from this machine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>login</code></td>
+<td class="org-left">Log in this CLI session using your Docker credentials</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tag &lt;image&gt; username/repository:tag</code></td>
+<td class="org-left">Tag &lt;image&gt; for upload to registry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>push username/repository:tag</code></td>
+<td class="org-left">Upload tagged image to registry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>run username/repository:tag</code></td>
+<td class="org-left">Run image from a registry</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+(<a href="https://docs.docker.com/get-started/part2/#conclusion-of-part-two">src</a>)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3275b2a" class="outline-2">
+<h2 id="org3275b2a">More advanced docker commands</h2>
+<div class="outline-text-2" id="text-org3275b2a">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command (docker &#x2026;)</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>volume rm $(docker volume ls)</code></td>
+<td class="org-left">Remove all named volumes</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>exec -i -t container_name /bin/bash</code></td>
+<td class="org-left">Open a terminal</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>system prune</code></td>
+<td class="org-left">WARNING: use with caution</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-org9a9405b" class="outline-3">
+<h3 id="org9a9405b">docker-compose</h3>
+<div class="outline-text-3" id="text-org9a9405b">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">command (<code>docker-compose ...</code>)</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>exec &lt;container_name&gt; bash</code></td>
+<td class="org-left">run command <code>bash</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-f &lt;file&gt; up</code></td>
+<td class="org-left">start from a custom file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>down --volumes</code></td>
+<td class="org-left">also remove volumes attached to the container</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">25 Sep 2018</div><h1 class="post-title"><a href="orgmode.html">Org-mode cheat sheet</a></h1>
+<p>
+<a href="https://orgmode.org/manual/">Manual</a> | <a href="https://orgmode.org/orgcard.pdf">RefCard</a> | <a href="https://orgmode.org/worg/org-tutorials/org4beginners.html">Org4Beginners</a> | <a href="https://orgmode.org/worg/org-glossary.html">Glossary</a> | <a href="http://ehneilsen.net/notebook/orgExamples/org-examples.html">Cookbook</a> | <a href="http://thagomizer.com/blog/2017/03/16/five-useful-org-mode-features.html">5 useful features</a>
+</p>
+
+<div id="outline-container-orgd05c397" class="outline-2">
+<h2 id="orgd05c397">Markup: <b>bold</b>, <i>italic</i>, <span class="underline">underlined</span>, <del>strikethrough</del>, , <code>verbatim</code>, <code>code</code></h2>
+<div class="outline-text-2" id="text-orgd05c397">
+<ul class="org-ul">
+<li>list
+<ul class="org-ul">
+<li>other list
+<ul class="org-ul">
+<li>Numbered list</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org20a2ce3" class="outline-2">
+<h2 id="org20a2ce3">Links<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>: <a href="http://otech.nl">http://otech.nl</a>, <a href="http://otech.nl">OTech</a>, <img src="http://otech.nl/img/otech.jpg" alt="otech.jpg"></h2>
+</div>
+
+<div id="outline-container-org1fe6a2a" class="outline-2">
+<h2 id="org1fe6a2a">Cycle to do items with S-LEFT and S-RIGHT</h2>
+</div>
+
+<div id="outline-container-orgfcb8fb7" class="outline-2">
+<h2 id="orgfcb8fb7">Table and keys</h2>
+<div class="outline-text-2" id="text-orgfcb8fb7">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">context</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">M-RET</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">New headline</td>
+</tr>
+
+<tr>
+<td class="org-left">TAB / S-TAB</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Fold / Unfold</td>
+</tr>
+
+<tr>
+<td class="org-left">M-RIGHT / M-LEFT</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Promote / Demote</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">table</td>
+<td class="org-left">Move column</td>
+</tr>
+
+<tr>
+<td class="org-left">M-UP / M-DOWN</td>
+<td class="org-left">table</td>
+<td class="org-left">Move row</td>
+</tr>
+
+<tr>
+<td class="org-left">M-S-DOWN</td>
+<td class="org-left">table</td>
+<td class="org-left">Insert row (?)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c RET</td>
+<td class="org-left">table</td>
+<td class="org-left">Insert horizontal line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ^</td>
+<td class="org-left">table</td>
+<td class="org-left">Sort lines</td>
+</tr>
+
+<tr>
+<td class="org-left">S-RIGHT / S-LEFT</td>
+<td class="org-left">task</td>
+<td class="org-left">Cycle workflow</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">list</td>
+<td class="org-left">Cycle bullet type</td>
+</tr>
+
+<tr>
+<td class="org-left">S-UP / S-DOWN</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Cycle priority</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-e</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Export menu</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c a</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Agenda</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c C-c</td>
+<td class="org-left">heading</td>
+<td class="org-left">edit tags</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">on top</td>
+<td class="org-left">refresh local setup</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c '</td>
+<td class="org-left">code block</td>
+<td class="org-left">edit in native mode</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c ;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Toggle COMMENT of subtree</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2a4f57e" class="outline-2">
+<h2 id="org2a4f57e">Literal examples</h2>
+<div class="outline-text-2" id="text-org2a4f57e">
+<pre class="example">
+Some example from a text file.
+</pre>
+
+<p>
+Also available: <code>VERSE</code>, <code>QUOTE</code> and <code>CENTER</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4cbd4b8" class="outline-2">
+<h2 id="org4cbd4b8">Source code blocks</h2>
+<div class="outline-text-2" id="text-org4cbd4b8">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">org-xor</span> <span style="color: #BFEBBF;">(</span>a b<span style="color: #BFEBBF;">)</span>
+  <span style="color: #9FC59F;">"Exclusive or."</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> a <span style="color: #D0BF8F;">(</span>not b<span style="color: #D0BF8F;">)</span> b<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
+
+<p>
+Use <a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-ditaa.html">Ditaa</a> for figures.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">Show markup by removing the last (hidden) symbol of the link</div></div>
+
+
+</div>
+</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">22 Jun 2018</div><h1 class="post-title"><a href="blockchain.html">Blockchain</a></h1>
+
+<div id="outline-container-orgbfdc17d" class="outline-2">
+<h2 id="orgbfdc17d">Key concepts</h2>
+<div class="outline-text-2" id="text-orgbfdc17d">
+<ul class="org-ul">
+<li>Chain of immutable blocks (though hashes)</li>
+<li>Public, distributed replication (through peer to peer - p2p)</li>
+<li>Decentralized, trustless consensus (by collective self-interest)</li>
+<li>Forks are resolved through scoring (resulting in orphan blocks)</li>
+</ul>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">28 May 2018</div><h1 class="post-title"><a href="web_scraping.html">Web scraping with Scrapy</a></h1>
+<p>
+You will need three components for web scraping:
+</p>
+
+<ol class="org-ol">
+<li>a tool to GET files from the web,</li>
+<li>a tool to figure out how to process these files, and</li>
+<li>a tool to do the actual processing.</li>
+</ol>
+
+
+<p>
+The one in the middle is where we, the humans, come in. The Chrome developer tools (or whatever they are called in your browser of choice) are our friends here. We can use the `Elements` tab to figure out the structure of a page and the identifiers we need to navigate that structure:
+</p>
+
+<p>
+<a href="./img/chrome_developer_tools.png">Chrome Developer Tools</a>
+</p>
+
+<p>
+You can use <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a> to automate the processing, combined with <a href="http://docs.python-requests.org/">requests</a> or the default <a href="https://docs.python.org/3/library/urllib.html">urllib</a> to do the file transfers. But <a href="https://scrapy.org">Scrapy</a> provides an all-in-one package.
+</p>
+
+<div id="outline-container-org785d608" class="outline-2">
+<h2 id="org785d608">Scrapy</h2>
+<div class="outline-text-2" id="text-org785d608">
+<p>
+There are two ways to use Scrapy, the hard way and the <i>quick-'n-dirty</i> way:
+</p>
+
+<ul class="org-ul">
+<li>For the <span class="underline">hard way</span> you let Scrapy generate a project for you with the <a href="https://doc.scrapy.org/en/latest/topics/commands.html#creating-projects">startproject</a> command. This will give you all the bells and whistles you need for extensive web-scraping, including items, middleware and pipelines. This will allow you to write a whole nest of related (or unrelated) spiders and deploy them to the cloud. But for most use cases this is far more than is needed, and the easy way is sufficient.</li>
+
+<li>The <span class="underline">easy way</span> is to simply write a spider and run it with the <a href="https://doc.scrapy.org/en/latest/topics/commands.html#runspider">runspider</a> command. This will give you just one, simple spider, but I find that in most cases this is sufficient.</li>
+</ul>
+
+<p>
+The <code>scrapy shell</code> command allows you the research the page and experiment with selectors.
+</p>
+
+<p>
+The <code>scrapy view</code> command (both in the Scrapy shell and from the command line as a parameter to the <code>scrapy</code> command) opens a page in your browser, as seen by Scrapy. This prevents differences between how your browser GETs a page and how Scrape sees it.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">03 Mar 2018</div><h1 class="post-title"><a href="datascience.html">Data Science with Pandas</a></h1>
+<p>
+<a href="https://pandas.pydata.org/">Home</a> | <a href="http://ehneilsen.net/notebook/pandasExamples/pandas_examples.html">Cookbook</a> | <a href="https://jakevdp.github.io/PythonDataScienceHandbook">Handbook</a>
+</p>
+
+<p>
+Data science is learning from data in order to gain useful predictions and insights and consists of the steps below<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>:
+</p>
+
+
+<ol class="org-ol">
+<li><span class="underline">Ask</span> an interesting question:
+<ol class="org-ol">
+<li>What is the scientific <b>goal</b>?</li>
+<li>What would you do if you had all the <b>data</b>?</li>
+<li>What do you want to <b>predict</b> or <b>estimate</b>?</li>
+</ol></li>
+<li><span class="underline">GET</span> the data:
+<ol class="org-ol">
+<li>How were the data <b>sampled</b>?</li>
+<li>Which data are <b>relevant</b>?</li>
+<li>Are there <b>privacy</b> or <b>copyright</b> issues?</li>
+</ol></li>
+<li><span class="underline">EXPLORE</span> the data:
+<ol class="org-ol">
+<li><b>Plot</b> the data.</li>
+<li>Are there <b>anomalies</b>?</li>
+<li>Are there <b>patterns</b>?</li>
+</ol></li>
+<li><span class="underline">MODEL</span> the data:
+<ol class="org-ol">
+<li><b>Build</b> a model.</li>
+<li><b>Fit</b> the model.</li>
+<li><b>Validate</b> the model.</li>
+</ol></li>
+<li><span class="underline">Communicate</span> and <b>visualize</b> the results:
+<ol class="org-ol">
+<li>What did we <b>learn</b>?</li>
+<li>Do the results make <b>sense</b>?</li>
+<li>Can we tell a <b>story</b>?</li>
+</ol></li>
+</ol>
+
+<p>
+Data science can roughly be split into data engineering and data analysis. Data <i>engineering</i> consists of gathering and preparing data for analysis by <a href="web_scraping.html">scraping</a> cleaning, correcting, integrating, re-ordering, scaling, converting, etc. In other words, data engineers transform data into formats that data scientists can analyze. For a good introduction to data <i>analysis</i>, sign up for the free <a href="https://eu.udacity.com/course/intro-to-data-analysis--ud170">Udacity course</a>.
+</p>
+
+<div id="outline-container-orgc117143" class="outline-2">
+<h2 id="orgc117143">Python packages</h2>
+<div class="outline-text-2" id="text-orgc117143">
+<p>
+The <a href="https://pydata.org/downloads.html">PyData</a> Python Open Data Science Stack:
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.numpy.org/">numpy</a> as <code>np</code>
+<ul class="org-ul">
+<li><code>axis=0</code> means <i>columns</i> and <code>axis=1</code> means <i>rows</i></li>
+</ul></li>
+<li><a href="http://www.scipy.org/">scipy</a></li>
+<li><a href="http://scikit-learn.org/stable/documentation.html">sklearn</a>
+<ul class="org-ul">
+<li><code>preprocessing</code></li>
+<li><code>linear_model</code></li>
+<li><code>cross_validation</code></li>
+<li><code>confusion_matrix</code></li>
+<li><code>svm</code></li>
+<li><code>multiclass</code></li>
+</ul></li>
+<li><a href="https://pandas.pydata.org">pandas</a> as <code>pd</code> <br>
+(<i>The</i> framework for data engineering, although others exist, like <a href="http://bubbles.databrewery.org/">Bubbles</a>.)</li>
+<li><a href="https://www.bonobo-project.org/">bobobo</a> for ETL</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org69ef334" class="outline-2">
+<h2 id="org69ef334">Preprocessing</h2>
+<div class="outline-text-2" id="text-org69ef334">
+<ul class="org-ul">
+<li>binarization</li>
+<li>mean removal</li>
+<li>scaling</li>
+<li>normalization</li>
+<li>label encoding</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org00d6182" class="outline-2">
+<h2 id="org00d6182">Machine learning</h2>
+<div class="outline-text-2" id="text-org00d6182">
+<p>
+<a href="https://en.wikipedia.org/wiki/Portal:Machine_learning">Wikipedia Portal</a>
+</p>
+</div>
+
+<div id="outline-container-orgab41001" class="outline-3">
+<h3 id="orgab41001">Applications of AI</h3>
+<div class="outline-text-3" id="text-orgab41001">
+<ul class="org-ul">
+<li>Computer Vision (CV)</li>
+<li>Natural Language Processing (NLP)</li>
+<li>Speech Recognition</li>
+<li>Expert Systems (rule based)</li>
+<li>Games</li>
+<li>Robotics (<i>all of the above</i>)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org78e19eb" class="outline-3">
+<h3 id="org78e19eb">Branches of AI</h3>
+<div class="outline-text-3" id="text-org78e19eb">
+<ul class="org-ul">
+<li>Machine learning and pattern recognition</li>
+<li>Logic-based AI</li>
+<li>Seach</li>
+<li>Knowledge reresentation</li>
+<li>Planning</li>
+<li>Heuristics</li>
+<li>Genetic Programming</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org513ba3b" class="outline-3">
+<h3 id="org513ba3b">Types of models</h3>
+<div class="outline-text-3" id="text-org513ba3b">
+<ul class="org-ul">
+<li>analytical</li>
+<li>learned
+<ul class="org-ul">
+<li>supervised: uses labeled training data</li>
+<li>unsupervised: without labeled training data</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5e95dc0" class="outline-3">
+<h3 id="org5e95dc0">Techniques</h3>
+<div class="outline-text-3" id="text-org5e95dc0">
+<ul class="org-ul">
+<li><p>
+classification: arrange data into a a fixed numer of distinct categories
+</p>
+<ul class="org-ul">
+<li>if the number of samples if insufficient, the algorithm will <b>overfit</b>  the training data</li>
+</ul>
+<p>
+Classifiers:
+</p>
+<ul class="org-ul">
+<li>logistic regression: not actually a classifier, but often used as such</li>
+<li>Bayes theorem: describes the probability of an event occurring based on different conditions related to this event (<i>naïve Bayes</i>  assumes these conditions are independent of each other)</li>
+<li>Support Vector Machine (SVM): defines a separating hyperplane between classes (the best hyperplane maximizes the distance to each point)</li>
+</ul></li>
+<li>regression: explain the relationship between independent / input / predictor variables and dependent / output variables</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0dcdb8a" class="outline-3">
+<h3 id="org0dcdb8a">Metrics</h3>
+<div class="outline-text-3" id="text-org0dcdb8a">
+<ul class="org-ul">
+<li>Confusion matrix: shows the performance of a classifier in terms of true/false positives/negatives</li>
+<li><a href="https://en.wikipedia.org/wiki/F1_score">F1 score</a>: harmonic average of&#x2026;
+<ul class="org-ul">
+<li>precision: #true positives / #total positives</li>
+<li>recall: #true positives / #total truths</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2243c69" class="outline-3">
+<h3 id="org2243c69">Concepts</h3>
+<div class="outline-text-3" id="text-org2243c69">
+<ul class="org-ul">
+<li>Cognitive modeling: simulating the human thinking process</li>
+<li>Deep learning: feature extraction and transformation using using a cascade of multiple layers (hence <i>deep</i>) of nonlinear processing units (e.g. neural nets, belief networks), each using the output from the previous layer as input.</li>
+<li>Rational agent: does the 'right' thing in a given context, using sensors, actuators and an inference engine</li>
+<li>General Problem Solver (GPS)</li>
+<li>Cross validation: divide your data set into <i>training</i> and <i>test</i> subsets</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><a href="https://cs109.github.io">https://cs109.github.io</a></div></div>
+
+
+</div>
+</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">12 Feb 2018</div><h1 class="post-title"><a href="python.html">Python</a></h1>
+<p>
+I use Python for work and play. I make money with Python, and I have fun with it.
+</p>
+
+<p>
+There's excellent documentation for <a href="https://docs.python.org/3/">Python itself</a> and for many of the Python packages. But how do you use Python in practical, day-to-day use? <a href="https://automatetheboringstuff.com/">Automate the boring stuff</a> provides a thorough overview of the basics for beginners. This pages shows how <i>I</i> use Python. There are many other possibilities, but this one works for me.
+</p>
+
+<div id="outline-container-orgadd97ca" class="outline-2">
+<h2 id="orgadd97ca">Second best?</h2>
+<div class="outline-text-2" id="text-orgadd97ca">
+<p>
+Many consider Python 'the second best language for anything'. PHP may be the leading open source language for the web, Java may dominate the enterprise, R may be the dedicated language for data science, and bash may be the go to language for shell scripting, but in all these cases Python is at least a viable alternative.
+</p>
+
+<p>
+What this means is that by learning Python you can be competitive in all these areas. And learning Python is relatively easy, because it is considered to be very beginner-friendly (while at the same time being powerful enough to intrigue the most advanced hackers).
+</p>
+
+<p>
+But don't get carried away, because just learning Python (the programming <span class="underline">language</span>) is not enough. To be productive in any area, you will have to learn the <a href="#org4e1074e">appropriate package(s)</a> as well.
+</p>
+
+<p>
+The only area I can think of where Python is not at home, is the web client. There are client-side implementations like <a href="http://www.skulpt.org/">Skulpt</a>, but these are still rather obscure. <a href="javascript.html">Javascript</a> rulez (<i>sic</i>) in the browser. And with it, its elegant asynchronicity and use of callbacks. Both work in Python (the former since v3.4 through <a href="https://docs.python.org/3/library/asyncio.html">asyncio</a>), but they are not as common.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbb591e6" class="outline-2">
+<h2 id="orgbb591e6">History</h2>
+<div class="outline-text-2" id="text-orgbb591e6">
+<p>
+Python was originally developed by <a href="https://www.python.org/~guido/">Guide van Rossum</a> who also was its <a href="https://wiki.python.org/moin/BDFL">BDFL</a> for decades. But on July 12, 2018 he indicated he is going to <a href="https://mail.python.org/pipermail/python-committers/2018-July/005664.html">step down</a>.
+</p>
+
+<p>
+Version 2.7 of Python has long been my default, but a couple of years ago I switched to version 3, which rectified some of the <a href="https://www.scrum.org/resources/blog/product-backlog-and-technical-debt">technical debt</a> that had built up in version 2, at the cost of loosing backwards compatibility.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7a47e2a" class="outline-2">
+<h2 id="org7a47e2a">Pythonic</h2>
+<div class="outline-text-2" id="text-org7a47e2a">
+<blockquote>
+<p>
+To describe something as clever is not considered a compliment in the Python culture.
+Alex Martelli - Python Cookbook (O’Reilly)
+</p>
+</blockquote>
+
+<p>
+When working with Python, you will often encounter the phrase <i>pythonic</i>, indicating if something is 'proper python' or not. But what does this mean?
+</p>
+
+<p>
+<a href="https://www.python.org/dev/peps/pep-0020/">PEP20</a>, or the <i>Zen of Python</i>, describes guiding principles for Python's design:
+</p>
+
+<ul class="org-ul">
+<li>Beautiful is better than ugly.</li>
+<li>Explicit is better than implicit.</li>
+<li>Simple is better than complex.</li>
+<li>Complex is better than complicated.</li>
+<li>Flat is better than nested.</li>
+<li>Sparse is better than dense.</li>
+<li>Readability counts.</li>
+<li>Special cases aren't special enough to break the rules.</li>
+<li>Although practicality beats purity.</li>
+<li>Errors should never pass silently.</li>
+<li>Unless explicitly silenced.</li>
+<li>In the face of ambiguity, refuse the temptation to guess.</li>
+<li>There should be one &#x2013;and preferably only one&#x2013; obvious way to do it.</li>
+<li>Although that way may not be obvious at first unless you're Dutch.</li>
+<li>Now is better than never.</li>
+<li>Although never is often better than <i>right</i> now.</li>
+<li>If the implementation is hard to explain, it's a bad idea.</li>
+<li>If the implementation is easy to explain, it may be a good idea.</li>
+<li>Namespaces are one honking great idea &#x2013; let's do more of those!</li>
+</ul>
+
+<p>
+Note that the Zen of Python uses terms like "is better than" and "beats", indicating that these are relative, rather than absolute, values. So, flat may be better than nested, but in specific conditions you may still use nesting.
+</p>
+
+<p>
+<a href="http://pep8.org/">PEP8</a> contains the Python style guide. Here you will find conventions about layout, whitespace, etc.
+</p>
+
+<p>
+The Hitchhiker’s Guide to Python contains an extensive section on <a href="https://docs.python-guide.org/#writing-great-python-code">writing great code</a>.
+</p>
+
+<p>
+To me, constructs like <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list comprehension</a> and <a href="https://wiki.python.org/moin/Generators">generators</a> feel very Python-specific, although they also occur in other languages.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4e1074e" class="outline-2">
+<h2 id="org4e1074e">Packages</h2>
+<div class="outline-text-2" id="text-org4e1074e">
+<p>
+<a href="https://docs.pipenv.org/">Pipenv</a>, as its name suggest, combines pip and virtualenv:
+</p>
+
+<blockquote>
+<p>
+Pipenv is primarily meant to provide users and developers of applications with an easy method to setup a working environment. It harnesses Pipfile, pip, and virtualenv into one single command. It features very pretty terminal colors.
+</p>
+</blockquote>
+
+<p>
+Pipenv simplified my Python workflow significantly. Instead of creating a virtual environment, activating it, running <code>pip install</code>, etc., I just do <code>pipenv shell</code> and I'm  in business.
+</p>
+
+<p>
+Here's a list of the packages I use most:
+</p>
+
+<ul class="org-ul">
+<li>Both <a href="#org5ef0626">flask</a> and <a href="#org05a55a0">Django</a> for web development, on the client combined with <a href="https://getbootstrap.com/">Bootstrap</a>, <a href="https://datatables.net/">Datatables</a> and <a href="https://www.chartjs.org/">Chart.js</a>.</li>
+<li><a href="pandas.html">Pandas</a> for data analysis.</li>
+<li><a href="web_scraping.html">Scrapy</a> for web scraping.</li>
+<li><p>
+<a href="documentation.html">Nikola</a> for blogging on <a href="https://pages.github.com/">Github pages</a>.
+</p>
+
+<p>
+But remember, this are just <i>my</i> preferences, <a href="https://www.intuh.net/woordenlijst/#ymmv">YMMV</a>. If you want to dig up your own favorites, head over to the curated list of Python packages at <a href="https://python.libhunt.com/categories">Awesome Python</a>.
+</p></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org06cf017" class="outline-2">
+<h2 id="org06cf017">Web development</h2>
+<div class="outline-text-2" id="text-org06cf017">
+</div>
+<div id="outline-container-org5ef0626" class="outline-3">
+<h3 id="org5ef0626">With Flask</h3>
+<div class="outline-text-3" id="text-org5ef0626">
+<p>
+Web projects differ widely, so there's not <i>one size fits all</i> web framework for me. What I need is just the basics that can be extended with anything the project at hand asks for. <a href="http://flask.pocoo.org/">Flask</a> is my go to package for web development.
+</p>
+
+<blockquote>
+<p>
+Flask is a microframework for Python based on Werkzeug, Jinja 2 and good intentions. Flask is fun and easy to set up.
+</p>
+</blockquote>
+
+<p>
+Out of the box, Flask just provides minimal http request/response, routing and template support. This means that Flask is unopinionated, but also that, for anything that's not completely trivial, you need to add extensions. Most of my projects need at least <a href="http://flask-sqlalchemy.pocoo.org/">SQL Alchemy</a>, <a href="https://flask-wtf.readthedocs.io/">WTForms</a> and <a href="https://pythonhosted.org/Flask-Security/">security</a>. For convenience, I have bundled these in {{% attention %}} <a href="https://github.com/otech-nl/barrel">Barrel</a>, which optionally also includes <a href="https://flask-admin.readthedocs.io">admin</a>, <a href="https://flask-restful.readthedocs.io/">REST</a> and <a href="https://github.com/tahoe/flask-datatables">datatables</a> modules.
+</p>
+
+<p>
+The most advanced part of Barrel is the db module, which provided CRUD-operations and relation decorators. I am working on making that a separate package as <i>SQLAngelo</i>. More on that later.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org05a55a0" class="outline-3">
+<h3 id="org05a55a0">With Django</h3>
+<div class="outline-text-3" id="text-org05a55a0">
+<p>
+<a href="https://www.djangoproject.com/">Django</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5b2f885" class="outline-2">
+<h2 id="org5b2f885">Testing</h2>
+<div class="outline-text-2" id="text-org5b2f885">
+</div>
+<div id="outline-container-orgf95b984" class="outline-3">
+<h3 id="orgf95b984">Unit testing</h3>
+<div class="outline-text-3" id="text-orgf95b984">
+<p>
+Python has many unit testing frameworks, like <a href="http://doc.pytest.org/">PyTest</a> and <a href="https://nose2.readthedocs.io/">Nose2</a>. But I prefer the default <a href="https://docs.python.org/3/library/unittest.html">unit testing</a>, because Python provides it out of the box, and it satisfies all of my requirements.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org144af5b" class="outline-3">
+<h3 id="org144af5b">Functional testing</h3>
+<div class="outline-text-3" id="text-org144af5b">
+<p>
+For functional (or behaviorial) testing I prefer <a href="https://behave.readthedocs.io/">Behave</a> that uses <a href="https://docs.cucumber.io/gherkin/">Gherkin</a> to describe behavior in (near) natural language.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org744c8c9" class="outline-3">
+<h3 id="org744c8c9">Utilities</h3>
+<div class="outline-text-3" id="text-org744c8c9">
+<p>
+<a href="https://github.com/chase-seibert/python-mocking">Mock Cookbook</a>
+<a href="https://faker.readthedocs.io/">Faker</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org44cf552" class="outline-2">
+<h2 id="org44cf552">Packages to look into</h2>
+<div class="outline-text-2" id="text-org44cf552">
+<ul class="org-ul">
+<li><a href="https://www.bonobo-project.org/">bobobo</a></li>
+<li><a href="http://pydoit.org/">Doit</a></li>
+</ul>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">05 Jan 2018</div><h1 class="post-title"><a href="productivity.html">Productivity</a></h1>
+<p>
+  <img src="./img/GTD-workflow.png" alt="GTD-workflow.png">
+(<a href="./img/GTD-advanced workflow.png">Advanced</a>)
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">28 Dec 2017</div><h1 class="post-title"><a href="javascript.html">Javascript</a></h1>
+<p>
+Once upon a time, Javascript was the domain of <i>script kiddies</i>. No more.
+</p>
+
+<p>
+The last few years have been a roller coaster ride for the language and its thriving community. The result is ECMA Script 6 (ES6, ES2016) with a long list of state of the art <a href="http://es6-features.org/">features</a>
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">11 Nov 2017</div><h1 class="post-title"><a href="documentation.html">Documentation</a></h1>
+<p>
+Clearly, <a href="http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructured Text</a> (reST) is the most Pythonic documentation format. And <a href="http://www.sphinx-doc.org/">Sphinx</a> is the generator to go with it.
+</p>
+
+<p>
+However, for most use cases, I find reST far too complicated and I prefer <a href="https://orgmode.org">Orgmode</a> (and sometimes <a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a>) for documentation.
+</p>
+
+<p>
+On occasion I use an <a href="http://markup.su/highlighter">Online Syntax Highlighter</a> to format source code.
+</p>
+
+<div id="outline-container-orgd3d9e99" class="outline-2">
+<h2 id="orgd3d9e99">Nikola</h2>
+<div class="outline-text-2" id="text-orgd3d9e99">
+<p>
+I sometimes blog with Markdown-files and publish it with static site generator <a href="http://getnikola.com">Nikola</a>. While writing I can check the live result with the <code>nikola auto</code> command.
+</p>
+
+<p>
+One of the lesser known features of Nikola are <a href="https://getnikola.com/handbook.html">shortcodes</a>: simple snippets that you can use throughout your blog. They come in the varieties built-in, community-provided, and home-made. The simplest way to roll your own is by using templates in the <code>shortcodes</code> directory. For example, I have defined a <code>shortcodes/attention.tmpl</code> that gives me <code>{{% attention %}}</code> whenever I want it.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">30 Oct 2017</div><h1 class="post-title"><a href="vagrant.html">Virtual development environments with Vagrant</a></h1>
+<p>
+Python's <a href="python.html">virtual environments</a> are a blessing, but as they manage Python dependencies only, they are also limited.
+</p>
+
+<p>
+For example, I use <a href="https://www.sqlite.org/">sqlite</a> for most of my projects, but in some cases, I need something else, like a more sophisticated SQL database (e.g. <a href="https://mariadb.org/">MariaDB</a>) or a no-SQL database (e.g. <a href="https://www.mongodb.com/">MongoDB</a>). In situations like that, I use <a href="https://www.vagrantup.com/">Vagrant</a>:
+</p>
+
+<blockquote>
+<p>
+Vagrant provides easy to configure, reproducible, and portable work environments built on top of industry-standard technology and controlled by a single consistent workflow to help maximize the productivity and flexibility of you and your team.
+</p>
+</blockquote>
+
+<p>
+What this means is that with Vagrant I can specify all my project's dependencies in configuration files and scripts. This keeps my projects nicely separated and allows me to reproduce my project's environment at will (this process is called <i>provisioning</i>). I can even use this provisioning to transfer the project to a different environment (e.g. from development to test) and to other developers.
+</p>
+
+<p>
+If you want to get Vagrant up and running, the <a href="https://www.vagrantup.com/intro/getting-started/index.html">Getting Started</a> section provides a good introduction. For a more beginner-friendly tutorial, head to <a href="https://scotch.io/tutorials/get-vagrant-up-and-running-in-no-time">Scotch.io</a> instead. If you want to skip all that, just go to the <a href="https://www.vagrantup.com/docs/">official documentation</a> or to the <a href="https://www.jetbrains.com/help/pycharm/using-the-advanced-vagrant-features-in-product.html">PyCharm Vagrant page</a> if that's your IDE of choice.
+</p>
+
+<p>
+In short, Vagrant is about provisioning a virtual machine with all the assets you need for your project. There are many provisioners to choose from to help you with that, like <a href="https://www.ansible.com/">Ansible</a>, <a href="https://puppet.com/">Puppet</a> and <a href="https://www.chef.io/">Chef</a>. But I prefer vanilla bash provisioning, because I am already familiar with bash and would have to learn any of the other provisioners. In other words, my needs are not complex enough to warrant the time needed to learn a more advanced provisioner. And, to be honest, I found their learning curve rather steep.
+</p>
+
+<p>
+To make my life (and maybe yours) a little easier, I wrote some basic scaffolding which is available <a href="https://github.com/otech-nl/vagrant-lemp">here</a>.
+</p>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">21 Oct 2017</div><h1 class="post-title"><a href="emacs.html">Emacs</a></h1>
+<p>
+<a href="https://www.gnu.org/software/emacs/">Home</a> | <a href="http://ergoemacs.org/">ErgoEmacs</a>
+</p>
+
+<p>
+I use <a href="https://github.com/bbatsov/prelude">Prelude Emacs</a> with minimal <a href="https://github.com/otech-nl/prelude">customisation</a>.
+</p>
+
+<div id="outline-container-org485282c" class="outline-2">
+<h2 id="org485282c">Keymaps</h2>
+<div class="outline-text-2" id="text-org485282c">
+</div>
+<div id="outline-container-org7f81329" class="outline-3">
+<h3 id="org7f81329">Emacs standard</h3>
+<div class="outline-text-3" id="text-org7f81329">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-^</td>
+<td class="org-left">Join with next line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-_</td>
+<td class="org-left">Undo</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c d</td>
+<td class="org-left">Duplicate line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-g</td>
+<td class="org-left">Abort operation</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 1</td>
+<td class="org-left">Focus window</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 2</td>
+<td class="org-left">Split window horizontally</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 3</td>
+<td class="org-left">Split window vertically</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-f</td>
+<td class="org-left">Find file (open into buffer)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-s</td>
+<td class="org-left">Save buffer to file</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-w</td>
+<td class="org-left">Save buffer to file as &#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x b</td>
+<td class="org-left">Go to other buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x d</td>
+<td class="org-left">Edit directory</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x e</td>
+<td class="org-left">Execute elisp under cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x o</td>
+<td class="org-left">Go to other window</td>
+</tr>
+
+<tr>
+<td class="org-left">M-f / M-b</td>
+<td class="org-left">Move word forward / backward</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgdd1c5fb" class="outline-3">
+<h3 id="orgdd1c5fb">Prelude</h3>
+<div class="outline-text-3" id="text-orgdd1c5fb">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c c</td>
+<td class="org-left">Clean buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c d</td>
+<td class="org-left">Duplicate line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c s</td>
+<td class="org-left">Swap windows</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgfe2b952" class="outline-3">
+<h3 id="orgfe2b952">Custom</h3>
+<div class="outline-text-3" id="text-orgfe2b952">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c /</td>
+<td class="org-left">Toggle region comment</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c j</td>
+<td class="org-left">Join lines</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c l</td>
+<td class="org-left">List packages</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x k</td>
+<td class="org-left">Kill buffer <i>immediately</i> (no confirmation)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">08 Sep 2017</div><h1 class="post-title"><a href="IT-wisdom.html">IT wisdom</a></h1>
+
+<div id="outline-container-org4f02f21" class="outline-2">
+<h2 id="org4f02f21">Code / design</h2>
+<div class="outline-text-2" id="text-org4f02f21">
+<p>
+<span class="underline">Good software</span> [<a href="https://martinfowler.com/bliki/BeckDesignRules.html">Beck</a>]:
+</p>
+<ol class="org-ol">
+<li><b>Passes the tests</b></li>
+<li><b>Reveals intention</b>
+<ul class="org-ul">
+<li>I will contend that <i>Conceptual Integrity</i> is the most important consideration in system design. It is better to have a system omit certain anomalous features and improvements, but to reflect one set of design ideas, than to have one that contains many good but independent and uncoordinated ideas. [<a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">Brooks</a>]</li>
+<li>Simplicity and clarity —in short: what mathematicians call "<i>elegance</i>"— are not a dispensable luxury, but a crucial matter that decides between success and failure [<a href="http://www.cs.utexas.edu/users/EWD/">Dijkstra</a>]</li>
+<li><i>Convention</i> over configuration</li>
+<li>Separation of Concerns</li>
+<li>Maximum coherence, minimum dependency</li>
+</ul></li>
+<li><b>No duplication</b>
+<ul class="org-ul">
+<li>Don’t Repeat Yourself (DRY)</li>
+<li>Single Point of Truth (SPOT)</li>
+</ul></li>
+<li><b>Fewest elements</b>
+<ul class="org-ul">
+<li>A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away. [<a href="https://en.wikipedia.org/wiki/Antoine_de_Saint-Exup%C3%A9ry">Antoine de Saint-Exupéry</a>]</li>
+<li>Less is More</li>
+<li>Occam's razor: the simplest option is usually correct</li>
+<li>Keep It Small and Simple (KISS) until proven complex</li>
+<li>Make everything as simple as possible, but not simpler [Einstein]</li>
+<li>Measuring programming progress by lines of code is like measuring aircraft building progress by weight. [Gates]</li>
+</ul></li>
+</ol>
+
+<p>
+Snippets:
+</p>
+<ul class="org-ul">
+<li>From the <a href="https://en.wikipedia.org/wiki/Design_Patterns">Gang of Four</a>:
+<ul class="org-ul">
+<li>Program to an <i>interface</i>, not an implementation</li>
+<li>Favor object <i>composition</i> over class inheritance</li>
+</ul></li>
+<li>Algemene namen:
+<ul class="org-ul">
+<li>Foo, bar</li>
+<li>Alice, Bob, Carol &amp; Dave</li>
+</ul></li>
+<li>Make the change easy. Then make the easy change.</li>
+<li>Technology develops from the primitive via the complex to the simple. [<a href="https://en.wikipedia.org/wiki/Antoine_de_Saint-Exup%C3%A9ry">Antoine de Saint-Exupéry</a>]</li>
+<li>Command Query Separation: Functions that change state should not return values and functions that return values should not change state.</li>
+<li><a href="https://hackernoon.com/object-oriented-tricks-3-death-by-arguments-d070ac86d996">Death by Arguments</a></li>
+<li><a href="https://www.refactoring.com/catalog/">Refactoring Catalog</a></li>
+<li><a href="http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod">Principles of OOD</a>:
+<ul class="org-ul">
+<li>Class design:
+<ul class="org-ul">
+<li>SRP (Single Responsibility Principle): A class should have one, and only one, reason to change.</li>
+<li>OCP (Open Closed Principle): You should be able to extend a classes behavior, without modifying it.</li>
+<li>LSP (Liskov Substitution Principle): Derived classes must be substitutable for their base classes.</li>
+<li>ISP (Interface Segregation Principle): Make fine grained interfaces that are client specific.</li>
+<li>DIP (Dependency Inversion Principle): Depend on abstractions, not on concretions.</li>
+</ul></li>
+<li>Package<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> cohesion (what to put inside packages):
+<ul class="org-ul">
+<li>REP (Release Reuse Equivalency Principle): The granule of reuse is the granule of release.</li>
+<li>CCP (Common Closure Principle): Classes that change together are packaged together.</li>
+<li>CRP (Common Reuse Principle): Classes that are used together are packaged together.</li>
+</ul></li>
+<li>package couplings (metrics that evaluate the package structure of a system):
+<ul class="org-ul">
+<li>ADP (Acyclic Dependencies Principle): The dependency graph of packages must have no cycles.</li>
+<li>SDP (Stable Dependencies Principle): Depend in the direction of stability.</li>
+<li>SAP (Stable Abstractions Principle): Abstractness increases with stability.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgc5853c3" class="outline-2">
+<h2 id="orgc5853c3">Projects / management</h2>
+<div class="outline-text-2" id="text-orgc5853c3">
+<p>
+About IT:
+</p>
+<ul class="org-ul">
+<li>IT connects people and systems</li>
+<li>IT is a craft</li>
+<li>IT is human labour</li>
+</ul>
+
+<p>
+Snippets:
+</p>
+<ul class="org-ul">
+<li>Deploy Early and Often (DEO) / Release Early, Release Often (RERO)</li>
+<li>Problem vs Work</li>
+<li>Realistische ambitie</li>
+<li><span class="underline">Pareto principle</span>: 20/80% rule</li>
+<li>Lacking quality, rules abound.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3b9654c" class="outline-2">
+<h2 id="org3b9654c">Aphorisms</h2>
+<div class="outline-text-2" id="text-org3b9654c">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><span class="underline">Brooks's Law</span></td>
+<td class="org-left">Adding manpower to a late software project makes it later</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Clarke's third law</span></td>
+<td class="org-left">Any sufficiently advanced technology is indistinguishable from magic.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Reverse</span></td>
+<td class="org-left">any technology that is not like magic, is insufficiently advanced</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Conway's Law</span></td>
+<td class="org-left">organizations which design systems are constrained to produce designs</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">which are copies of the communication structures of these organizations</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://javadevguy.wordpress.com/2017/05/14/the-genius-of-the-law-of-demeter/">Law of Demeter</a></td>
+<td class="org-left">For all classes C, and for all methods M attached to C, all objects to which M sends a</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">message must be M’s argument objects (including the self object)</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Hanlon's razor</span></td>
+<td class="org-left">Never attribute to malice that which is adequately explained by stupidity.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Hofstadter's Law</span></td>
+<td class="org-left">It always takes longer than you expect, even when you take into account Hofstadter's Law.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Murphy's law</span></td>
+<td class="org-left">Anything that can go wrong, will go wrong.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Finagle's corollary</span></td>
+<td class="org-left">&#x2026;at the worst possible moment.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Muphry’s law</span></td>
+<td class="org-left">Any correction will introduce new errors.</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Parkinson's law</span></td>
+<td class="org-left">work expands so as to fill the time available for its completion</td>
+</tr>
+
+<tr>
+<td class="org-left"><span class="underline">Peter principle</span></td>
+<td class="org-left">managers rise to the level of their incompetence</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4bf5c37" class="outline-2">
+<h2 id="org4bf5c37">Abbrs</h2>
+<div class="outline-text-2" id="text-org4bf5c37">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">​REPL</td>
+<td class="org-left">Read Evaluate Print Loop</td>
+</tr>
+
+<tr>
+<td class="org-left">TL;DR</td>
+<td class="org-left">Too Long, Didn't Read</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">binary deliverable</div></div>
+
+
+</div>
+</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
+<hr/><div class="post-date">04 Jan 2017</div><h1 class="post-title"><a href="meteor.html">Meteor overview and major packages (deprecated)</a></h1>
+<p>
+This repository contains a brief overview of <a href="http://meteor.com">Meteor</a> and an list of its major packages. Meteor is an innovative platform for developing web-apps. The following features distinguish Meteor from other web-platforms:
+</p>
+
+<ul class="org-ul">
+<li>data over the wire: In Meteor client and server exchange data, not HTML.
+<ul class="org-ul">
+<li>single page app (SPA): This means that the client is loaded as a whole at start-up and then manages the user interaction without unnecessary calls to the server. This makes for a smooth user-experience.</li>
+<li>no REST: As you can access data from the client just as you would from the server, data over the wire also means that there is not need for REST interfaces.</li>
+</ul></li>
+<li>full-stack: In Meteor the functionality on both the server (through node.js) and the client (through the browser) is implemented in Javascript (ES2015+ to be exact). This saves the developer from continuously having to switch between languages.</li>
+<li>multi-platform: With Meteor you can build apps for web, iOS, and Android from the samen code base. Nou mar nerd Cordova for platform-specific features.</li>
+<li>no SQL: Meteor uses Mongodb as its data backend. Mongodb is document-based and does not use SQL.</li>
+<li>reactivity: Data in Meteor is updated everywhere once it changes. This includes all active clients, which adds to the smooth user-experience.</li>
+</ul>
+
+<blockquote>
+<p>
+These are impressive Unique Selling Points, but in the end it turned out to be too much (at least it was to me). There are just too many moving parts. So, since 2017Q4 I haven't worked with Meteor. It's premises are a developer's dream, but I always struggled to get a stable app.
+</p>
+</blockquote>
+
+<div id="outline-container-org90514c7" class="outline-2">
+<h2 id="org90514c7">Overview</h2>
+<div class="outline-text-2" id="text-org90514c7">
+<p>
+The mindmap below shows how I understand Meteor:
+</p>
+
+<p>
+<a href="./img/Meteor.png">Meteor mindmap</a>
+</p>
+
+<p>
+The client handles routing and rendering. Routing is taken care of by Flow router, which uses Blaze as template engine (Angular and React are also supported). Templates are divided in three layers:
+</p>
+
+<ul class="org-ul">
+<li>layouts define the general structure of your site, using pages</li>
+<li>pages are smart, which means they collect data and feed them to components</li>
+<li>components do not interact with anything except though parameters, which makes them highly reusable</li>
+</ul>
+
+<p>
+Templates can be controlled through helpers and event handlers (including onCreated).
+</p>
+
+<p>
+The server uses Mongodb as a datastore. Data is stored in collections, which are basically persistent JSON documents. A schema language is used to define the datastructures, so data can be validated. Schema also drive the autoform package. Collections can be controlled through helpers and hooks.
+</p>
+
+<p>
+The client and server communicate through a publish/subscribe mechanism and through methods. The server controls data access by selectively publishing data to the client. The client (pages) collect data through subscriptions. Methods are Meteor's remote procedure calls (RPCs) and can use schema for data validation.
+</p>
+
+<p>
+Some final tips &amp; tricks:
+</p>
+
+<ul class="org-ul">
+<li><code>waitOn</code> (package Iron Router) lets you defer execution untill a subscription has finished</li>
+<li>Meteor methods &lt;i&gt;can&lt;/i&gt; be called synchronously on the server, but &lt;i&gt;must&lt;/i&gt; be called asynchronously  on the client</li>
+<li>Global variables aren't available from templates. Access them with template helper.</li>
+<li>add <code>c:\Windows\System32</code> to path on tasklist.exe error</li>
+<li>The autorun function lets you define a function that is run automatically when a reactive data source changes.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge03d80f" class="outline-2">
+<h2 id="orge03d80f">Packages</h2>
+<div class="outline-text-2" id="text-orge03d80f">
+<p>
+Just like all other modern frameworks, Meteor relies heavily on third party packages from its thriving eco-system. The Meteor <a href="http://guide.meteor.com">Guide</a> gives an opinionated overview of which packages to use. The table below shows these packages in the middle column, along with some additional packages I prefer in the final column. For more packages visit <a href="https://atmospherejs.com/packages/most-used">Atmosphere.js</a>. You can import all these package definitions by importing the file <code>packages</code> from this repository into the file <code>packages</code> of your project and the remove any package you don't need.
+</p>
+
+<p>
+&lt;tr&gt;&lt;th&gt;subject&lt;/th&gt;&lt;th&gt;guide&lt;/th&gt;&lt;th&gt;extra&lt;/th&gt;&lt;/tr&gt;
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Out of the box</th>
+<th scope="col" class="org-left"><a href="https://docs.meteor.com/api/http.html">http</a></th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left"><a href="https://docs.meteor.com/packages/jquery.html">jQuery</a></th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left"><a href="https://docs.meteor.com/packages/markdown.html">markdown</a></th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left"><a href="http://atmospherejs.com/meteor/ecmascript">meteor:ecmascript</a></th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left"><a href="https://docs.meteor.com/packages/underscore.html">underscore</a></th>
+<th scope="col" class="org-left">&#xa0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Collections</td>
+<td class="org-left"><a href="http://atmospherejs.com/aldeed/collection2">aldeed:collection2</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/aldeed/simple-schema">aldeed:simple-schema</a> (<a href="http://atmospherejs.com/jagi/astronomy">jagi:astronomy</a>)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/dburles/collection-helpers">dburles:collection-helpers</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/percolate/migrations">percolate:migrations</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Data-loading</td>
+<td class="org-left"><a href="http://atmospherejs.com/percolate/find-from-publication)">percolate:find-from-publication</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/reywood/publish-composite">reywood:publish-composite</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/simple/rest">simple:rest</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/tmeasday/publish-counts">tmeasday:publish-counts</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Methods</td>
+<td class="org-left"><a href="https://atmospherejs.com/mdg/validated-method">mdg:validated-method</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">User accounts</td>
+<td class="org-left"><a href="http://atmospherejs.com/alanning/roles">alanning:roles</a></td>
+<td class="org-left"><a href="http://atmospherejs.com/didericis/permissions-mixin">didericis:permissions-mixin</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/arillo/flow-router-helpers">arillo:flow-router-helpers</a></td>
+<td class="org-left"><a href="http://atmospherejs.com/matb33/collection-hooks">matb33:collection-hooks</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/useraccounts/flow-routing">useraccounts:flow-routing</a></td>
+<td class="org-left"><a href="http://atmospherejs.com/ongoworks/security">ongoworks:security</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/useraccounts/core">useraccounts:core</a></td>
+<td class="org-left"><a href="http://atmospherejs.com/ostrio/user-status">ostrio:user-status</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/useraccounts/unstyled">useraccounts:unstyled</a></td>
+<td class="org-left">(or <a href="http://atmospherejs.com/tmeasday/presence">tmeasday:presence</a>)</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Routing</td>
+<td class="org-left"><a href="http://atmospherejs.com/arillo/flow-router-helpers">arillo:flow-router-helpers</a></td>
+<td class="org-left"><a href="http://atmospherejs.com/ostrio/flow-router-extra">ostrio:flow-router-extra</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/kadira/flow-router">kadira:flow-router</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/kadira/blaze-layout">kadira:blaze-layout</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/nimble/restivus">nimble:restivus</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/zimme/active-route">zimme:active-route</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">UI-UX</td>
+<td class="org-left"><a href="http://atmospherejs.com/aldeed/autoform">aldeed:autoform</a></td>
+<td class="org-left"><a href="http://atmospherejs.com/aldeed/tabular">aldeed:tabular</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/percolate/momentum">percolate:momentum</a></td>
+<td class="org-left"><a href="http://atmospherejs.com/aldeed/template-extension">aldeed:template-extension</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/tap/i18n">tap:i18n</a> (or <a href="http://atmospherejs.com/universe/18n">universe:18n</a>)</td>
+<td class="org-left"><a href="http://atmospherejs.com/aslagle/reactive-table">aslagle:reactive-table</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/chrismbeckett/toastr">chrismbeckett:toastr</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/fortawesome/fontawesome">fortawesome:fontawesome</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/matb33:bootstrap-glyphicons">matb33:bootstrap-glyphicons</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/raix/push">raix:push</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/semantic/ui">semantic:ui</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/twbs/bootstrap">twbs:bootstrap</a></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Other</td>
+<td class="org-left"><a href="http://atmospherejs.com/dburles/google-maps">dburles:google-maps</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/easy/search">easy:search</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/momentjs/moment">momentjs:moment</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/sach/flow-db-admin">sach:flow-db-admin</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Testing</td>
+<td class="org-left"><a href="http://atmospherejs.com/dburles/factory">dburles:factory</a></td>
+<td class="org-left"><a href="https://chimp.readme.io/">Chimp</a> (not really a package)</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/hwillson/stub-collections">hwillson:stub-collections</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/johanbrook/publication-collector">johanbrook:publication-collector</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/meteortesting/mocha">meteortesting:mocha</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/practicalmeteor/mocha">practicalmeteor:mocha</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/velocity/meteor-stubs">velocity:meteor-stubs</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/xolvio/cleaner">xolvio:cleaner</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Deployment</td>
+<td class="org-left"><a href="http://atmospherejs.com/dferber/prerender">dferber:prerender</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/kadira/dochead">kadira:dochead</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/mdg/seo">mdg:seo</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="http://atmospherejs.com/okgrow/analytics">okgrow:analytics</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div><div id="archive">
+<a href="archive.html">Other posts</a>
+</div>
+</div>
+</body>
+</html>

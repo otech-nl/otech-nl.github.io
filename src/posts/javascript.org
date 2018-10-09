@@ -1,0 +1,8 @@
+#+title: Javascript
+#+date: <2017-12-28 10:58>
+#+filetags: technote
+#+STARTUP: showall indent
+
+Once upon a time, Javascript was the domain of /script kiddies/. No more.
+
+The last few years have been a roller coaster ride for the language and its thriving community. The result is ECMA Script 6 (ES6, ES2016) with a long list of state of the art [[http://es6-features.org/][features]]

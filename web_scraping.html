@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>Web scraping with Scrapy</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <div class="menu">
+    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
+    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+  </div>
+</div>
+</div>
+<div id="content">
+<hr/><div class="post-date">28 May 2018</div><h1 class="post-title"><a href="web_scraping.html">Web scraping with Scrapy</a></h1>
+<p>
+You will need three components for web scraping:
+</p>
+
+<ol class="org-ol">
+<li>a tool to GET files from the web,</li>
+<li>a tool to figure out how to process these files, and</li>
+<li>a tool to do the actual processing.</li>
+</ol>
+
+
+<p>
+The one in the middle is where we, the humans, come in. The Chrome developer tools (or whatever they are called in your browser of choice) are our friends here. We can use the `Elements` tab to figure out the structure of a page and the identifiers we need to navigate that structure:
+</p>
+
+<p>
+<a href="./img/chrome_developer_tools.png">Chrome Developer Tools</a>
+</p>
+
+<p>
+You can use <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a> to automate the processing, combined with <a href="http://docs.python-requests.org/">requests</a> or the default <a href="https://docs.python.org/3/library/urllib.html">urllib</a> to do the file transfers. But <a href="https://scrapy.org">Scrapy</a> provides an all-in-one package.
+</p>
+
+<div id="outline-container-org785d608" class="outline-2">
+<h2 id="org785d608">Scrapy</h2>
+<div class="outline-text-2" id="text-org785d608">
+<p>
+There are two ways to use Scrapy, the hard way and the <i>quick-'n-dirty</i> way:
+</p>
+
+<ul class="org-ul">
+<li>For the <span class="underline">hard way</span> you let Scrapy generate a project for you with the <a href="https://doc.scrapy.org/en/latest/topics/commands.html#creating-projects">startproject</a> command. This will give you all the bells and whistles you need for extensive web-scraping, including items, middleware and pipelines. This will allow you to write a whole nest of related (or unrelated) spiders and deploy them to the cloud. But for most use cases this is far more than is needed, and the easy way is sufficient.</li>
+
+<li>The <span class="underline">easy way</span> is to simply write a spider and run it with the <a href="https://doc.scrapy.org/en/latest/topics/commands.html#runspider">runspider</a> command. This will give you just one, simple spider, but I find that in most cases this is sufficient.</li>
+</ul>
+
+<p>
+The <code>scrapy shell</code> command allows you the research the page and experiment with selectors.
+</p>
+
+<p>
+The <code>scrapy view</code> command (both in the Scrapy shell and from the command line as a parameter to the <code>scrapy</code> command) opens a page in your browser, as seen by Scrapy. This prevents differences between how your browser GETs a page and how Scrape sees it.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
+</div>
+</body>
+</html>
