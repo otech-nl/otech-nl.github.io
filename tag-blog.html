@@ -6,7 +6,7 @@
       type="application/rss+xml"
       href="https://otech.nl/rss.xml"
       title="RSS feed for https://otech.nl/"/>
-<title>Emacs: here I go again</title>
+<title>Posts tagged "blog"</title>
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
 <meta name="author" content="René Steetskamp">
@@ -35,7 +35,8 @@
 </div>
 </div>
 <div id="content">
-<h1 class="title">Emacs: here I go again</h1>
+<h1 class="title">Posts tagged "blog"</h1>
+<h2 class="post-title"><a href="emacs.html">Emacs: here I go again</a></h2>
 <p>
 "Emacs" stands for "Editor MACroS" and I have been using it on-and-off since the early 1990s. I had detours to Windows-editorss (like Sublime and Code) and IDEs (like Eclipse) but I always return to Emacs.
 </p>
@@ -64,22 +65,31 @@ But then, after again a couple of years, I find that the whole pre-packaged deal
 <li>I found that many of the Prelude goodies are bundled in <a href="https://github.com/bbatsov/crux">crux</a> (by the same author) and used the whole Prelude-setup to cherry-pick what works for me.</li>
 <li>I am going to use Emacs customization whereever possible, to minimize my manual <code>.emacs</code> hacking.</li>
 </ul>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-blog.html">blog</a> </div><hr/>
-<div id="disqus_thread"></div>
-<script>
- var disqus_config = function () {
-   this.page.url = 'http://otech.nl';
-   this.page.identifier = 'otech-nl';
- };
- (function() { // DON'T EDIT BELOW THIS LINE
-   var d = document, s = d.createElement('script');
-   s.src = 'https://otech-nl.disqus.com/embed.js';
-   s.setAttribute('data-timestamp', +new Date());
-   (d.head || d.body).appendChild(s);
- })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
+<h2 class="post-title"><a href="org-static-blog.html">org-static-blog</a></h2>
+<p>
+This website and its blog are written in <a href="https://orgmode.org/">orgmode</a>, exported to HTML through <a href="https://github.com/bastibe/org-static-blog/">org-static-blog</a>, and published through <a href="https://pages.github.com/">Github pages</a>.
+</p>
+
+<p>
+A few tips for <i>org-static-blog</i>:
+</p>
+
+<ul class="org-ul">
+<li>Drafts can also be used as static pages. So, for example, I have a <code>index.org</code> that becomes my landing page (after renaming <code>org-static-blog-index-file</code>).</li>
+<li>Use relative file names for references, so <code>./files/img.png</code> instead of  <code>/files/img.png</code> or <code>files/img.png</code>, to prevent <i>orgmode</i> to throw and <code>Unable to resolve link</code> error.</li>
+</ul>
+
+<p>
+Other considerations:
+</p>
+
+<ul class="org-ul">
+<li>The dates of blogs are of their first publication. If I make any changes to them later, this can be traced through <a href="https://github.com/otech-nl/otech-nl.github.io">github</a>.</li>
+<li>There is no way to leave comments.</li>
+</ul>
+<div id="archive">
+<a href="archive.html">Other posts</a>
+</div></div>
 <div id="postamble" class="status"><hr/>
 <footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
   | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>

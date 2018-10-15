@@ -1,6 +1,6 @@
 #+title: Welkom bij OTech
 #+date: <2018-09-27 10:10>
-#+filetags:
+#+filetags: page otech
 #+STARTUP: showall indent
 
 * ICT is een ambacht

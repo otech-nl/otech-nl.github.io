@@ -20,18 +20,22 @@
 <div class="header">
   <a href="/"><img id="logo" src="files/OTech.jpg"></a>
   <hr/>
-  <div class="menu">
-    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
-    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
-    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
-    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
-    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
-    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
-  </div>
+  <table class="menu">
+    <tr><td>
+        <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+        <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+        <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a>
+      </td><td align="right">
+        <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+        <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+        <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+    </td></tr>
+  </table>
+  <hr/>
 </div>
 </div>
 <div id="content">
-<hr/><div class="post-date">29 Sep 2018</div><h1 class="post-title"><a href="docker.html">Docker</a></h1>
+<h1 class="title">Docker</h1>
 <p>
 <a href="https://docs.docker.com/">Docs</a> | <a href="https://github.com/dimonomid/docker-quick-ref/releases/download/latest/docker-quick-ref.pdf">QuickRef</a> | <a href="https://dockerlux.github.io/pdf/cheat-sheet-v2.pdf">Cheatsheet</a>
 </p>
@@ -40,9 +44,9 @@
 Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&lt;command&gt;</code> (e.g. <code>man docker-run</code>).
 </p>
 
-<div id="outline-container-org914c8d2" class="outline-2">
-<h2 id="org914c8d2">Concepts:</h2>
-<div class="outline-text-2" id="text-org914c8d2">
+<div id="outline-container-org0bb5eb5" class="outline-2">
+<h2 id="org0bb5eb5">Concepts:</h2>
+<div class="outline-text-2" id="text-org0bb5eb5">
 <ul class="org-ul">
 <li>Major components:
 <ul class="org-ul">
@@ -87,16 +91,16 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </div>
 </div>
 
-<div id="outline-container-orga316fc4" class="outline-2">
-<h2 id="orga316fc4">Basic docker commands</h2>
-<div class="outline-text-2" id="text-orga316fc4">
-<table>
+<div id="outline-container-org3a58f23" class="outline-2">
+<h2 id="org3a58f23">Basic docker commands</h2>
+<div class="outline-text-2" id="text-org3a58f23">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -193,16 +197,16 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </div>
 </div>
 
-<div id="outline-container-org3275b2a" class="outline-2">
-<h2 id="org3275b2a">More advanced docker commands</h2>
-<div class="outline-text-2" id="text-org3275b2a">
-<table>
+<div id="outline-container-orgd61a583" class="outline-2">
+<h2 id="orgd61a583">More advanced docker commands</h2>
+<div class="outline-text-2" id="text-orgd61a583">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -229,16 +233,16 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </table>
 </div>
 
-<div id="outline-container-org9a9405b" class="outline-3">
-<h3 id="org9a9405b">docker-compose</h3>
-<div class="outline-text-3" id="text-org9a9405b">
-<table>
+<div id="outline-container-orge60b9fd" class="outline-3">
+<h3 id="orge60b9fd">docker-compose</h3>
+<div class="outline-text-3" id="text-orge60b9fd">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -266,7 +270,22 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </div>
 </div>
 </div>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div><hr/>
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+   this.page.url = 'http://otech.nl';
+   this.page.identifier = 'otech-nl';
+ };
+ (function() { // DON'T EDIT BELOW THIS LINE
+   var d = document, s = d.createElement('script');
+   s.src = 'https://otech-nl.disqus.com/embed.js';
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
 <div id="postamble" class="status"><hr/>
 <footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
   | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>

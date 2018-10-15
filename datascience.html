@@ -20,18 +20,22 @@
 <div class="header">
   <a href="/"><img id="logo" src="files/OTech.jpg"></a>
   <hr/>
-  <div class="menu">
-    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
-    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
-    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
-    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
-    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
-    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
-  </div>
+  <table class="menu">
+    <tr><td>
+        <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+        <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+        <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a>
+      </td><td align="right">
+        <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+        <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+        <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+    </td></tr>
+  </table>
+  <hr/>
 </div>
 </div>
 <div id="content">
-<hr/><div class="post-date">03 Mar 2018</div><h1 class="post-title"><a href="datascience.html">Data Science with Pandas</a></h1>
+<h1 class="title">Data Science with Pandas</h1>
 <p>
 <a href="https://pandas.pydata.org/">Home</a> | <a href="http://ehneilsen.net/notebook/pandasExamples/pandas_examples.html">Cookbook</a> | <a href="https://jakevdp.github.io/PythonDataScienceHandbook">Handbook</a>
 </p>
@@ -78,9 +82,9 @@ Data science is learning from data in order to gain useful predictions and insig
 Data science can roughly be split into data engineering and data analysis. Data <i>engineering</i> consists of gathering and preparing data for analysis by <a href="web_scraping.html">scraping</a> cleaning, correcting, integrating, re-ordering, scaling, converting, etc. In other words, data engineers transform data into formats that data scientists can analyze. For a good introduction to data <i>analysis</i>, sign up for the free <a href="https://eu.udacity.com/course/intro-to-data-analysis--ud170">Udacity course</a>.
 </p>
 
-<div id="outline-container-orgc117143" class="outline-2">
-<h2 id="orgc117143">Python packages</h2>
-<div class="outline-text-2" id="text-orgc117143">
+<div id="outline-container-orgabee2d6" class="outline-2">
+<h2 id="orgabee2d6">Python packages</h2>
+<div class="outline-text-2" id="text-orgabee2d6">
 <p>
 The <a href="https://pydata.org/downloads.html">PyData</a> Python Open Data Science Stack:
 </p>
@@ -100,16 +104,16 @@ The <a href="https://pydata.org/downloads.html">PyData</a> Python Open Data Scie
 <li><code>svm</code></li>
 <li><code>multiclass</code></li>
 </ul></li>
-<li><a href="https://pandas.pydata.org">pandas</a> as <code>pd</code> <br>
+<li><a href="https://pandas.pydata.org">pandas</a> as <code>pd</code> <br />
 (<i>The</i> framework for data engineering, although others exist, like <a href="http://bubbles.databrewery.org/">Bubbles</a>.)</li>
 <li><a href="https://www.bonobo-project.org/">bobobo</a> for ETL</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org69ef334" class="outline-2">
-<h2 id="org69ef334">Preprocessing</h2>
-<div class="outline-text-2" id="text-org69ef334">
+<div id="outline-container-orgd16eb14" class="outline-2">
+<h2 id="orgd16eb14">Preprocessing</h2>
+<div class="outline-text-2" id="text-orgd16eb14">
 <ul class="org-ul">
 <li>binarization</li>
 <li>mean removal</li>
@@ -120,17 +124,17 @@ The <a href="https://pydata.org/downloads.html">PyData</a> Python Open Data Scie
 </div>
 </div>
 
-<div id="outline-container-org00d6182" class="outline-2">
-<h2 id="org00d6182">Machine learning</h2>
-<div class="outline-text-2" id="text-org00d6182">
+<div id="outline-container-org5b2578a" class="outline-2">
+<h2 id="org5b2578a">Machine learning</h2>
+<div class="outline-text-2" id="text-org5b2578a">
 <p>
 <a href="https://en.wikipedia.org/wiki/Portal:Machine_learning">Wikipedia Portal</a>
 </p>
 </div>
 
-<div id="outline-container-orgab41001" class="outline-3">
-<h3 id="orgab41001">Applications of AI</h3>
-<div class="outline-text-3" id="text-orgab41001">
+<div id="outline-container-org4b74d1a" class="outline-3">
+<h3 id="org4b74d1a">Applications of AI</h3>
+<div class="outline-text-3" id="text-org4b74d1a">
 <ul class="org-ul">
 <li>Computer Vision (CV)</li>
 <li>Natural Language Processing (NLP)</li>
@@ -141,9 +145,9 @@ The <a href="https://pydata.org/downloads.html">PyData</a> Python Open Data Scie
 </ul>
 </div>
 </div>
-<div id="outline-container-org78e19eb" class="outline-3">
-<h3 id="org78e19eb">Branches of AI</h3>
-<div class="outline-text-3" id="text-org78e19eb">
+<div id="outline-container-org061d4ee" class="outline-3">
+<h3 id="org061d4ee">Branches of AI</h3>
+<div class="outline-text-3" id="text-org061d4ee">
 <ul class="org-ul">
 <li>Machine learning and pattern recognition</li>
 <li>Logic-based AI</li>
@@ -155,9 +159,9 @@ The <a href="https://pydata.org/downloads.html">PyData</a> Python Open Data Scie
 </ul>
 </div>
 </div>
-<div id="outline-container-org513ba3b" class="outline-3">
-<h3 id="org513ba3b">Types of models</h3>
-<div class="outline-text-3" id="text-org513ba3b">
+<div id="outline-container-org0efff18" class="outline-3">
+<h3 id="org0efff18">Types of models</h3>
+<div class="outline-text-3" id="text-org0efff18">
 <ul class="org-ul">
 <li>analytical</li>
 <li>learned
@@ -168,9 +172,9 @@ The <a href="https://pydata.org/downloads.html">PyData</a> Python Open Data Scie
 </ul>
 </div>
 </div>
-<div id="outline-container-org5e95dc0" class="outline-3">
-<h3 id="org5e95dc0">Techniques</h3>
-<div class="outline-text-3" id="text-org5e95dc0">
+<div id="outline-container-org2228632" class="outline-3">
+<h3 id="org2228632">Techniques</h3>
+<div class="outline-text-3" id="text-org2228632">
 <ul class="org-ul">
 <li><p>
 classification: arrange data into a a fixed numer of distinct categories
@@ -190,9 +194,9 @@ Classifiers:
 </ul>
 </div>
 </div>
-<div id="outline-container-org0dcdb8a" class="outline-3">
-<h3 id="org0dcdb8a">Metrics</h3>
-<div class="outline-text-3" id="text-org0dcdb8a">
+<div id="outline-container-org8a38f1d" class="outline-3">
+<h3 id="org8a38f1d">Metrics</h3>
+<div class="outline-text-3" id="text-org8a38f1d">
 <ul class="org-ul">
 <li>Confusion matrix: shows the performance of a classifier in terms of true/false positives/negatives</li>
 <li><a href="https://en.wikipedia.org/wiki/F1_score">F1 score</a>: harmonic average of&#x2026;
@@ -203,9 +207,9 @@ Classifiers:
 </ul>
 </div>
 </div>
-<div id="outline-container-org2243c69" class="outline-3">
-<h3 id="org2243c69">Concepts</h3>
-<div class="outline-text-3" id="text-org2243c69">
+<div id="outline-container-org0d2d0ae" class="outline-3">
+<h3 id="org0d2d0ae">Concepts</h3>
+<div class="outline-text-3" id="text-org0d2d0ae">
 <ul class="org-ul">
 <li>Cognitive modeling: simulating the human thinking process</li>
 <li>Deep learning: feature extraction and transformation using using a cascade of multiple layers (hence <i>deep</i>) of nonlinear processing units (e.g. neural nets, belief networks), each using the output from the previous layer as input.</li>
@@ -224,7 +228,22 @@ Classifiers:
 
 
 </div>
-</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div><hr/>
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+   this.page.url = 'http://otech.nl';
+   this.page.identifier = 'otech-nl';
+ };
+ (function() { // DON'T EDIT BELOW THIS LINE
+   var d = document, s = d.createElement('script');
+   s.src = 'https://otech-nl.disqus.com/embed.js';
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
 <div id="postamble" class="status"><hr/>
 <footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
   | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>

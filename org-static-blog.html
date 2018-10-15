@@ -6,7 +6,7 @@
       type="application/rss+xml"
       href="https://otech.nl/rss.xml"
       title="RSS feed for https://otech.nl/"/>
-<title>Documentation</title>
+<title>org-static-blog</title>
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
 <meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
 <meta name="author" content="René Steetskamp">
@@ -35,32 +35,29 @@
 </div>
 </div>
 <div id="content">
-<h1 class="title">Documentation</h1>
+<h1 class="title">org-static-blog</h1>
 <p>
-Clearly, <a href="http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructured Text</a> (reST) is the most Pythonic documentation format. And <a href="http://www.sphinx-doc.org/">Sphinx</a> is the generator to go with it.
+This website and its blog are written in <a href="https://orgmode.org/">orgmode</a>, exported to HTML through <a href="https://github.com/bastibe/org-static-blog/">org-static-blog</a>, and published through <a href="https://pages.github.com/">Github pages</a>.
 </p>
 
 <p>
-However, for most use cases, I find reST far too complicated and I prefer <a href="https://orgmode.org">Orgmode</a> (and sometimes <a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a>) for documentation.
+A few tips for <i>org-static-blog</i>:
 </p>
 
-<p>
-On occasion I use an <a href="http://markup.su/highlighter">Online Syntax Highlighter</a> to format source code.
-</p>
-
-<div id="outline-container-org4b44943" class="outline-2">
-<h2 id="org4b44943">Nikola</h2>
-<div class="outline-text-2" id="text-org4b44943">
-<p>
-I sometimes blog with Markdown-files and publish it with static site generator <a href="http://getnikola.com">Nikola</a>. While writing I can check the live result with the <code>nikola auto</code> command.
-</p>
+<ul class="org-ul">
+<li>Drafts can also be used as static pages. So, for example, I have a <code>index.org</code> that becomes my landing page (after renaming <code>org-static-blog-index-file</code>).</li>
+<li>Use relative file names for references, so <code>./files/img.png</code> instead of  <code>/files/img.png</code> or <code>files/img.png</code>, to prevent <i>orgmode</i> to throw and <code>Unable to resolve link</code> error.</li>
+</ul>
 
 <p>
-One of the lesser known features of Nikola are <a href="https://getnikola.com/handbook.html">shortcodes</a>: simple snippets that you can use throughout your blog. They come in the varieties built-in, community-provided, and home-made. The simplest way to roll your own is by using templates in the <code>shortcodes</code> directory. For example, I have defined a <code>shortcodes/attention.tmpl</code> that gives me <code>{{% attention %}}</code> whenever I want it.
+Other considerations:
 </p>
-</div>
-</div>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div><hr/>
+
+<ul class="org-ul">
+<li>The dates of blogs are of their first publication. If I make any changes to them later, this can be traced through <a href="https://github.com/otech-nl/otech-nl.github.io">github</a>.</li>
+<li>There is no way to leave comments.</li>
+</ul>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-blog.html">blog</a> </div><hr/>
 <div id="disqus_thread"></div>
 <script>
  var disqus_config = function () {

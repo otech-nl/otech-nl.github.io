@@ -1,47 +1,19 @@
-#+title: Emacs
-#+date: <2017-10-21 17:27>
-#+filetags: technote
+#+title: Emacs: here I go again
+#+date: <2018-10-13 Sat>
+#+filetags: blog
 #+STARTUP: showall indent
 
-[[https://www.gnu.org/software/emacs/][Home]] | [[http://ergoemacs.org/][ErgoEmacs]]
+"Emacs" stands for "Editor MACroS" and I have been using it on-and-off since the early 1990s. I had detours to Windows-editorss (like Sublime and Code) and IDEs (like Eclipse) but I always return to Emacs.
 
-I use [[https://github.com/bbatsov/prelude][Prelude Emacs]] with minimal [[https://github.com/otech-nl/prelude][customisation]].
+I like that Emacs has everything but the kitchen sink. It is pretty complete [[https://www.gnu.org/software/emacs/tour/][out of the box]] and it has tons of packages available in repositories like [[https://melpa.org][MELPA]].
 
-* Keymaps
+I like that the Emacs keychords are in my muscle memory.
 
-** Emacs standard
+I also like the tinkering that it allows. But that is also its/my pitfall: I can spend hours/days/weeks tinkering without ever doing anything really productive.
 
-   | key       | effect                       |
-   |-----------+------------------------------|
-   | C-^       | Join with next line          |
-   | C-_       | Undo                         |
-   | C-c d     | Duplicate line               |
-   | C-g       | Abort operation              |
-   | C-x 1     | Focus window                 |
-   | C-x 2     | Split window horizontally    |
-   | C-x 3     | Split window vertically      |
-   | C-x C-f   | Find file (open into buffer) |
-   | C-x C-s   | Save buffer to file          |
-   | C-x C-w   | Save buffer to file as ...   |
-   | C-x b     | Go to other buffer           |
-   | C-x d     | Edit directory               |
-   | C-x e     | Execute elisp under cursor   |
-   | C-x o     | Go to other window           |
-   | M-f / M-b | Move word forward / backward |
+So, every couple of years or so, my ~.emacs~ has become overly complex, so I tend to go look for a pre-packaged setup like [[https://github.com/bbatsov/prelude][Prelude Emacs]], which bundles a consistent set of pre-configured packages and settings. This greatly [[https://github.com/otech-nl/prelude][simplifies]] my ~.emacs~ and frees me from maintaining it.
 
-** Prelude
+But then, after again a couple of years, I find that the whole pre-packaged deal restricts my right to self-determination. And I decide to start my own .emacs from scratch. Which is where I am at now:
 
-   | key   | effect         |
-   |-------+----------------|
-   | C-c c | Clean buffer   |
-   | C-c d | Duplicate line |
-   | C-c s | Swap windows   |
-
-** Custom
-
-   | key   | effect                                      |
-   |-------+---------------------------------------------|
-   | C-c / | Toggle region comment                       |
-   | C-c j | Join lines                                  |
-   | C-c l | List packages                               |
-   | C-x k | Kill buffer /immediately/ (no confirmation) |
+- I found that many of the Prelude goodies are bundled in [[https://github.com/bbatsov/crux][crux]] (by the same author) and used the whole Prelude-setup to cherry-pick what works for me.
+- I am going to use Emacs customization whereever possible, to minimize my manual ~.emacs~ hacking.

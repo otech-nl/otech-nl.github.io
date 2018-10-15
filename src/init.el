@@ -21,21 +21,24 @@
 
 (setq org-static-blog-page-header (read-file "templates/page-header.html"))
 (setq org-static-blog-page-preamble (read-file "templates/page-preamble.html"))
+(setq org-static-blog-post-postamble (read-file "templates/post-comments.html"))
 (setq org-static-blog-page-postamble (read-file "templates/page-postamble.html"))
 
 ;; override functions
 
-;; I want an extra hr
-(defun org-static-blog-post-preamble (post-filename)
-  "Returns the formatted date and headline of the post.
-This function is called for every post and prepended to the post body.
-Modify this function if you want to change a posts headline."
-  (concat
-   "<hr/>"
-   "<div class=\"post-date\">" (format-time-string "%d %b %Y" (org-static-blog-get-date post-filename)) "</div>"
-   "<h1 class=\"post-title\">"
-   "<a href=\"" (org-static-blog-get-url post-filename) "\">" (org-static-blog-get-title post-filename) "</a>"
-   "</h1>\n"))
+(defun org-static-blog-post-preamble (post &optional is_post)
+  "Overridden: only show date on full page"
+  (if is_post (org-static-blog-post-html-date post)) "")
+
+
+(defun org-static-blog-post-postamble (post &optional is_post)
+  "Overridden: only show postamble on full page"
+  (if is_post
+      (concat
+       (org-static-blog-post-taglist post)
+       org-static-blog-post-postamble)
+    ""
+    ))
 
 (provide 'init)
 ;;; init.el ends here

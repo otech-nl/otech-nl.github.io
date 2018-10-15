@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://otech.nl/rss.xml"
+      title="RSS feed for https://otech.nl/"/>
+<title>Emacs</title>
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1,width=device-width,minimum-scale=1">
+<meta name="author" content="René Steetskamp">
+<meta name="referrer" content="no-referrer">
+<link rel="stylesheet" href="files/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <a href="/"><img id="logo" src="files/OTech.jpg"></a>
+  <hr/>
+  <table class="menu">
+    <tr><td>
+        <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+        <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+        <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a>
+      </td><td align="right">
+        <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+        <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+        <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+    </td></tr>
+  </table>
+  <hr/>
+</div>
+</div>
+<div id="content">
+<h1 class="title">Emacs</h1>
+<p>
+<a href="https://www.gnu.org/software/emacs/">Home</a>
+</p>
+
+<div id="outline-container-org89e30cc" class="outline-2">
+<h2 id="org89e30cc">Keymaps</h2>
+<div class="outline-text-2" id="text-org89e30cc">
+</div>
+<div id="outline-container-orgc94f22c" class="outline-3">
+<h3 id="orgc94f22c">Emacs standard</h3>
+<div class="outline-text-3" id="text-orgc94f22c">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-^</td>
+<td class="org-left">Join with next line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-_</td>
+<td class="org-left">Undo</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c d</td>
+<td class="org-left">Duplicate line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-g</td>
+<td class="org-left">Abort operation</td>
+</tr>
+
+<tr>
+<td class="org-left">C-h</td>
+<td class="org-left">HELP! (and learn)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 1</td>
+<td class="org-left">Focus window</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 2</td>
+<td class="org-left">Split window horizontally</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x 3</td>
+<td class="org-left">Split window vertically</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-f</td>
+<td class="org-left">Find file (open into buffer)</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-s</td>
+<td class="org-left">Save buffer to file</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-w</td>
+<td class="org-left">Save buffer to file as &#x2026;</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x C-x</td>
+<td class="org-left">Exchange point and mark</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x b</td>
+<td class="org-left">Go to other buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x d</td>
+<td class="org-left">Edit directory</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x e</td>
+<td class="org-left">Execute elisp under cursor</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x o</td>
+<td class="org-left">Go to other window</td>
+</tr>
+
+<tr>
+<td class="org-left">M-.</td>
+<td class="org-left">Go to definition</td>
+</tr>
+
+<tr>
+<td class="org-left">M-f / M-b</td>
+<td class="org-left">Move word forward / backward</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org505eedf" class="outline-3">
+<h3 id="org505eedf">Prelude</h3>
+<div class="outline-text-3" id="text-org505eedf">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c c</td>
+<td class="org-left">Clean buffer</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c d</td>
+<td class="org-left">Duplicate line</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c s</td>
+<td class="org-left">Swap windows</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgf221037" class="outline-3">
+<h3 id="orgf221037">Custom</h3>
+<div class="outline-text-3" id="text-orgf221037">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">key</th>
+<th scope="col" class="org-left">effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">C-c /</td>
+<td class="org-left">Toggle region comment</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c j</td>
+<td class="org-left">Join lines</td>
+</tr>
+
+<tr>
+<td class="org-left">C-c l</td>
+<td class="org-left">List packages</td>
+</tr>
+
+<tr>
+<td class="org-left">C-x k</td>
+<td class="org-left">Kill buffer <i>immediately</i> (no confirmation)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div><hr/>
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+   this.page.url = 'http://otech.nl';
+   this.page.identifier = 'otech-nl';
+ };
+ (function() { // DON'T EDIT BELOW THIS LINE
+   var d = document, s = d.createElement('script');
+   s.src = 'https://otech-nl.disqus.com/embed.js';
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
+</div>
+</body>
+</html>

@@ -32,7 +32,7 @@ img#logo {
 }
 
 .menu {
-  text-align: center;
+    width: 100%;
 }
 
 .post-date, .taglist {
@@ -48,4 +48,5 @@ pre, code, tt {
 
 td, th {
   vertical-align: top;
+  padding: 5pt;
 }

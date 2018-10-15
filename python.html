@@ -20,18 +20,22 @@
 <div class="header">
   <a href="/"><img id="logo" src="files/OTech.jpg"></a>
   <hr/>
-  <div class="menu">
-    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
-    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
-    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
-    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
-    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
-    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
-  </div>
+  <table class="menu">
+    <tr><td>
+        <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+        <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+        <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a>
+      </td><td align="right">
+        <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+        <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+        <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+    </td></tr>
+  </table>
+  <hr/>
 </div>
 </div>
 <div id="content">
-<hr/><div class="post-date">12 Feb 2018</div><h1 class="post-title"><a href="python.html">Python</a></h1>
+<h1 class="title">Python</h1>
 <p>
 I use Python for work and play. I make money with Python, and I have fun with it.
 </p>
@@ -40,9 +44,9 @@ I use Python for work and play. I make money with Python, and I have fun with it
 There's excellent documentation for <a href="https://docs.python.org/3/">Python itself</a> and for many of the Python packages. But how do you use Python in practical, day-to-day use? <a href="https://automatetheboringstuff.com/">Automate the boring stuff</a> provides a thorough overview of the basics for beginners. This pages shows how <i>I</i> use Python. There are many other possibilities, but this one works for me.
 </p>
 
-<div id="outline-container-orgadd97ca" class="outline-2">
-<h2 id="orgadd97ca">Second best?</h2>
-<div class="outline-text-2" id="text-orgadd97ca">
+<div id="outline-container-org2485cc4" class="outline-2">
+<h2 id="org2485cc4">Second best?</h2>
+<div class="outline-text-2" id="text-org2485cc4">
 <p>
 Many consider Python 'the second best language for anything'. PHP may be the leading open source language for the web, Java may dominate the enterprise, R may be the dedicated language for data science, and bash may be the go to language for shell scripting, but in all these cases Python is at least a viable alternative.
 </p>
@@ -52,7 +56,7 @@ What this means is that by learning Python you can be competitive in all these a
 </p>
 
 <p>
-But don't get carried away, because just learning Python (the programming <span class="underline">language</span>) is not enough. To be productive in any area, you will have to learn the <a href="#org4e1074e">appropriate package(s)</a> as well.
+But don't get carried away, because just learning Python (the programming <span class="underline">language</span>) is not enough. To be productive in any area, you will have to learn the <a href="#org7ec8936">appropriate package(s)</a> as well.
 </p>
 
 <p>
@@ -61,9 +65,9 @@ The only area I can think of where Python is not at home, is the web client. The
 </div>
 </div>
 
-<div id="outline-container-orgbb591e6" class="outline-2">
-<h2 id="orgbb591e6">History</h2>
-<div class="outline-text-2" id="text-orgbb591e6">
+<div id="outline-container-orgdd13446" class="outline-2">
+<h2 id="orgdd13446">History</h2>
+<div class="outline-text-2" id="text-orgdd13446">
 <p>
 Python was originally developed by <a href="https://www.python.org/~guido/">Guide van Rossum</a> who also was its <a href="https://wiki.python.org/moin/BDFL">BDFL</a> for decades. But on July 12, 2018 he indicated he is going to <a href="https://mail.python.org/pipermail/python-committers/2018-July/005664.html">step down</a>.
 </p>
@@ -74,9 +78,9 @@ Version 2.7 of Python has long been my default, but a couple of years ago I swit
 </div>
 </div>
 
-<div id="outline-container-org7a47e2a" class="outline-2">
-<h2 id="org7a47e2a">Pythonic</h2>
-<div class="outline-text-2" id="text-org7a47e2a">
+<div id="outline-container-org5abc1b5" class="outline-2">
+<h2 id="org5abc1b5">Pythonic</h2>
+<div class="outline-text-2" id="text-org5abc1b5">
 <blockquote>
 <p>
 To describe something as clever is not considered a compliment in the Python culture.
@@ -132,9 +136,9 @@ To me, constructs like <a href="https://docs.python.org/3/tutorial/datastructure
 </div>
 </div>
 
-<div id="outline-container-org4e1074e" class="outline-2">
-<h2 id="org4e1074e">Packages</h2>
-<div class="outline-text-2" id="text-org4e1074e">
+<div id="outline-container-org7ec8936" class="outline-2">
+<h2 id="org7ec8936">Packages</h2>
+<div class="outline-text-2" id="text-org7ec8936">
 <p>
 <a href="https://docs.pipenv.org/">Pipenv</a>, as its name suggest, combines pip and virtualenv:
 </p>
@@ -154,7 +158,7 @@ Here's a list of the packages I use most:
 </p>
 
 <ul class="org-ul">
-<li>Both <a href="#org5ef0626">flask</a> and <a href="#org05a55a0">Django</a> for web development, on the client combined with <a href="https://getbootstrap.com/">Bootstrap</a>, <a href="https://datatables.net/">Datatables</a> and <a href="https://www.chartjs.org/">Chart.js</a>.</li>
+<li>Both <a href="#org0e1eb96">flask</a> and <a href="#orga7a7048">Django</a> for web development, on the client combined with <a href="https://getbootstrap.com/">Bootstrap</a>, <a href="https://datatables.net/">Datatables</a> and <a href="https://www.chartjs.org/">Chart.js</a>.</li>
 <li><a href="pandas.html">Pandas</a> for data analysis.</li>
 <li><a href="web_scraping.html">Scrapy</a> for web scraping.</li>
 <li><p>
@@ -169,13 +173,13 @@ But remember, this are just <i>my</i> preferences, <a href="https://www.intuh.ne
 </div>
 
 
-<div id="outline-container-org06cf017" class="outline-2">
-<h2 id="org06cf017">Web development</h2>
-<div class="outline-text-2" id="text-org06cf017">
+<div id="outline-container-orgd132b74" class="outline-2">
+<h2 id="orgd132b74">Web development</h2>
+<div class="outline-text-2" id="text-orgd132b74">
 </div>
-<div id="outline-container-org5ef0626" class="outline-3">
-<h3 id="org5ef0626">With Flask</h3>
-<div class="outline-text-3" id="text-org5ef0626">
+<div id="outline-container-org0e1eb96" class="outline-3">
+<h3 id="org0e1eb96">With Flask</h3>
+<div class="outline-text-3" id="text-org0e1eb96">
 <p>
 Web projects differ widely, so there's not <i>one size fits all</i> web framework for me. What I need is just the basics that can be extended with anything the project at hand asks for. <a href="http://flask.pocoo.org/">Flask</a> is my go to package for web development.
 </p>
@@ -196,9 +200,9 @@ The most advanced part of Barrel is the db module, which provided CRUD-operation
 </div>
 </div>
 
-<div id="outline-container-org05a55a0" class="outline-3">
-<h3 id="org05a55a0">With Django</h3>
-<div class="outline-text-3" id="text-org05a55a0">
+<div id="outline-container-orga7a7048" class="outline-3">
+<h3 id="orga7a7048">With Django</h3>
+<div class="outline-text-3" id="text-orga7a7048">
 <p>
 <a href="https://www.djangoproject.com/">Django</a>
 </p>
@@ -206,31 +210,31 @@ The most advanced part of Barrel is the db module, which provided CRUD-operation
 </div>
 </div>
 
-<div id="outline-container-org5b2f885" class="outline-2">
-<h2 id="org5b2f885">Testing</h2>
-<div class="outline-text-2" id="text-org5b2f885">
+<div id="outline-container-orgcd5eda2" class="outline-2">
+<h2 id="orgcd5eda2">Testing</h2>
+<div class="outline-text-2" id="text-orgcd5eda2">
 </div>
-<div id="outline-container-orgf95b984" class="outline-3">
-<h3 id="orgf95b984">Unit testing</h3>
-<div class="outline-text-3" id="text-orgf95b984">
+<div id="outline-container-orgaea8809" class="outline-3">
+<h3 id="orgaea8809">Unit testing</h3>
+<div class="outline-text-3" id="text-orgaea8809">
 <p>
 Python has many unit testing frameworks, like <a href="http://doc.pytest.org/">PyTest</a> and <a href="https://nose2.readthedocs.io/">Nose2</a>. But I prefer the default <a href="https://docs.python.org/3/library/unittest.html">unit testing</a>, because Python provides it out of the box, and it satisfies all of my requirements.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org144af5b" class="outline-3">
-<h3 id="org144af5b">Functional testing</h3>
-<div class="outline-text-3" id="text-org144af5b">
+<div id="outline-container-orge1525a3" class="outline-3">
+<h3 id="orge1525a3">Functional testing</h3>
+<div class="outline-text-3" id="text-orge1525a3">
 <p>
 For functional (or behaviorial) testing I prefer <a href="https://behave.readthedocs.io/">Behave</a> that uses <a href="https://docs.cucumber.io/gherkin/">Gherkin</a> to describe behavior in (near) natural language.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org744c8c9" class="outline-3">
-<h3 id="org744c8c9">Utilities</h3>
-<div class="outline-text-3" id="text-org744c8c9">
+<div id="outline-container-orgfc96b07" class="outline-3">
+<h3 id="orgfc96b07">Utilities</h3>
+<div class="outline-text-3" id="text-orgfc96b07">
 <p>
 <a href="https://github.com/chase-seibert/python-mocking">Mock Cookbook</a>
 <a href="https://faker.readthedocs.io/">Faker</a>
@@ -239,16 +243,41 @@ For functional (or behaviorial) testing I prefer <a href="https://behave.readthe
 </div>
 </div>
 
-<div id="outline-container-org44cf552" class="outline-2">
-<h2 id="org44cf552">Packages to look into</h2>
-<div class="outline-text-2" id="text-org44cf552">
+<div id="outline-container-orgdcc416f" class="outline-2">
+<h2 id="orgdcc416f">Tips</h2>
+<div class="outline-text-2" id="text-orgdcc416f">
+<ul class="org-ul">
+<li>For REPL there is no standard like <a href="https://ipython.org/">ipython</a>, but in some cases I prefer <a href="https://github.com/jonathanslenders/ptpython">ptpython</a>.</li>
+<li>The command <code>python -m site</code></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3196fed" class="outline-2">
+<h2 id="org3196fed">Packages to look into</h2>
+<div class="outline-text-2" id="text-org3196fed">
 <ul class="org-ul">
 <li><a href="https://www.bonobo-project.org/">bobobo</a></li>
 <li><a href="http://pydoit.org/">Doit</a></li>
 </ul>
 </div>
 </div>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div></div>
+<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div><hr/>
+<div id="disqus_thread"></div>
+<script>
+ var disqus_config = function () {
+   this.page.url = 'http://otech.nl';
+   this.page.identifier = 'otech-nl';
+ };
+ (function() { // DON'T EDIT BELOW THIS LINE
+   var d = document, s = d.createElement('script');
+   s.src = 'https://otech-nl.disqus.com/embed.js';
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
 <div id="postamble" class="status"><hr/>
 <footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
   | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>

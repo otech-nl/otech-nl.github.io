@@ -114,6 +114,11 @@ There's excellent documentation for [[https://docs.python.org/3/][Python itself]
    [[https://github.com/chase-seibert/python-mocking][Mock Cookbook]]
    [[https://faker.readthedocs.io/][Faker]]
 
+* Tips
+
+- For REPL there is no standard like [[https://ipython.org/][ipython]], but in some cases I prefer [[https://github.com/jonathanslenders/ptpython][ptpython]].
+- The command ~python -m site~
+
 * Packages to look into
 
 - [[https://www.bonobo-project.org/][bobobo]]

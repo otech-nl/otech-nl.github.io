@@ -1,0 +1,16 @@
+#+title: org-static-blog
+#+date: <2018-10-10 19:35>
+#+filetags: blog
+#+STARTUP: showall indent
+
+This website and its blog are written in [[https://orgmode.org/][orgmode]], exported to HTML through [[https://github.com/bastibe/org-static-blog/][org-static-blog]], and published through [[https://pages.github.com/][Github pages]].
+
+A few tips for /org-static-blog/:
+
+- Drafts can also be used as static pages. So, for example, I have a ~index.org~ that becomes my landing page (after renaming ~org-static-blog-index-file~).
+- Use relative file names for references, so ~./files/img.png~ instead of  ~/files/img.png~ or ~files/img.png~, to prevent /orgmode/ to throw and ~Unable to resolve link~ error.
+
+Other considerations:
+
+- The dates of blogs are of their first publication. If I make any changes to them later, this can be traced through [[https://github.com/otech-nl/otech-nl.github.io][github]].
+- There is no way to leave comments.

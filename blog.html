@@ -16,22 +16,77 @@
 <link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans|Sans" rel="stylesheet">
 </head>
 <body>
-<div id="preamble" class="status"><div class="header">
+<div id="preamble" class="status">
+<div class="header">
   <a href="/"><img id="logo" src="files/OTech.jpg"></a>
   <hr/>
-  <div class="menu">
-    <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
-    <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
-    <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a> |
-    <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
-    <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
-    <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
-  </div>
+  <table class="menu">
+    <tr><td>
+        <i class="fas fa-briefcase"></i> <a href="diensten.html">Diensten</a> |
+        <i class="fas fa-thumbs-up"></i> <a href="referenties.html">Referenties</a> |
+        <i class="fas fa-pen-nib"></i> <a href="blog.html">Blog</a>
+      </td><td align="right">
+        <i class="fas fa-archive"></i> <a href="archive.html">Archief</a> |
+        <i class="fas fa-tags"></i> <a href="tags.html">Tags</a> |
+        <i class="fas fa-rss"></i> <a href="rss.xml">RSS feed</a>
+    </td></tr>
+  </table>
+  <hr/>
 </div>
 </div>
 <div id="content">
+<h2 class="post-title"><a href="emacs.html">Emacs: here I go again</a></h2>
+<p>
+"Emacs" stands for "Editor MACroS" and I have been using it on-and-off since the early 1990s. I had detours to Windows-editorss (like Sublime and Code) and IDEs (like Eclipse) but I always return to Emacs.
+</p>
 
-<hr/><div class="post-date">29 Sep 2018</div><h1 class="post-title"><a href="docker.html">Docker</a></h1>
+<p>
+I like that Emacs has everything but the kitchen sink. It is pretty complete <a href="https://www.gnu.org/software/emacs/tour/">out of the box</a> and it has tons of packages available in repositories like <a href="https://melpa.org">MELPA</a>.
+</p>
+
+<p>
+I like that the Emacs keychords are in my muscle memory.
+</p>
+
+<p>
+I also like the tinkering that it allows. But that is also its/my pitfall: I can spend hours/days/weeks tinkering without ever doing anything really productive.
+</p>
+
+<p>
+So, every couple of years or so, my <code>.emacs</code> has become overly complex, so I tend to go look for a pre-packaged setup like <a href="https://github.com/bbatsov/prelude">Prelude Emacs</a>, which bundles a consistent set of pre-configured packages and settings. This greatly <a href="https://github.com/otech-nl/prelude">simplifies</a> my <code>.emacs</code> and frees me from maintaining it.
+</p>
+
+<p>
+But then, after again a couple of years, I find that the whole pre-packaged deal restricts my right to self-determination. And I decide to start my own .emacs from scratch. Which is where I am at now:
+</p>
+
+<ul class="org-ul">
+<li>I found that many of the Prelude goodies are bundled in <a href="https://github.com/bbatsov/crux">crux</a> (by the same author) and used the whole Prelude-setup to cherry-pick what works for me.</li>
+<li>I am going to use Emacs customization whereever possible, to minimize my manual <code>.emacs</code> hacking.</li>
+</ul>
+<h2 class="post-title"><a href="org-static-blog.html">org-static-blog</a></h2>
+<p>
+This website and its blog are written in <a href="https://orgmode.org/">orgmode</a>, exported to HTML through <a href="https://github.com/bastibe/org-static-blog/">org-static-blog</a>, and published through <a href="https://pages.github.com/">Github pages</a>.
+</p>
+
+<p>
+A few tips for <i>org-static-blog</i>:
+</p>
+
+<ul class="org-ul">
+<li>Drafts can also be used as static pages. So, for example, I have a <code>index.org</code> that becomes my landing page (after renaming <code>org-static-blog-index-file</code>).</li>
+<li>Use relative file names for references, so <code>./files/img.png</code> instead of  <code>/files/img.png</code> or <code>files/img.png</code>, to prevent <i>orgmode</i> to throw and <code>Unable to resolve link</code> error.</li>
+</ul>
+
+<p>
+Other considerations:
+</p>
+
+<ul class="org-ul">
+<li>The dates of blogs are of their first publication. If I make any changes to them later, this can be traced through <a href="https://github.com/otech-nl/otech-nl.github.io">github</a>.</li>
+<li>There is no way to leave comments.</li>
+</ul>
+<h2 class="post-title"><a href="docker.html">Docker</a></h2>
 <p>
 <a href="https://docs.docker.com/">Docs</a> | <a href="https://github.com/dimonomid/docker-quick-ref/releases/download/latest/docker-quick-ref.pdf">QuickRef</a> | <a href="https://dockerlux.github.io/pdf/cheat-sheet-v2.pdf">Cheatsheet</a>
 </p>
@@ -40,9 +95,9 @@
 Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&lt;command&gt;</code> (e.g. <code>man docker-run</code>).
 </p>
 
-<div id="outline-container-org914c8d2" class="outline-2">
-<h2 id="org914c8d2">Concepts:</h2>
-<div class="outline-text-2" id="text-org914c8d2">
+<div id="outline-container-org0bb5eb5" class="outline-2">
+<h2 id="org0bb5eb5">Concepts:</h2>
+<div class="outline-text-2" id="text-org0bb5eb5">
 <ul class="org-ul">
 <li>Major components:
 <ul class="org-ul">
@@ -87,16 +142,16 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </div>
 </div>
 
-<div id="outline-container-orga316fc4" class="outline-2">
-<h2 id="orga316fc4">Basic docker commands</h2>
-<div class="outline-text-2" id="text-orga316fc4">
-<table>
+<div id="outline-container-org3a58f23" class="outline-2">
+<h2 id="org3a58f23">Basic docker commands</h2>
+<div class="outline-text-2" id="text-org3a58f23">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -193,16 +248,16 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </div>
 </div>
 
-<div id="outline-container-org3275b2a" class="outline-2">
-<h2 id="org3275b2a">More advanced docker commands</h2>
-<div class="outline-text-2" id="text-org3275b2a">
-<table>
+<div id="outline-container-orgd61a583" class="outline-2">
+<h2 id="orgd61a583">More advanced docker commands</h2>
+<div class="outline-text-2" id="text-orgd61a583">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -229,16 +284,16 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </table>
 </div>
 
-<div id="outline-container-org9a9405b" class="outline-3">
-<h3 id="org9a9405b">docker-compose</h3>
-<div class="outline-text-3" id="text-org9a9405b">
-<table>
+<div id="outline-container-orge60b9fd" class="outline-3">
+<h3 id="orge60b9fd">docker-compose</h3>
+<div class="outline-text-3" id="text-orge60b9fd">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -266,15 +321,14 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </div>
 </div>
 </div>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
-<hr/><div class="post-date">25 Sep 2018</div><h1 class="post-title"><a href="orgmode.html">Org-mode cheat sheet</a></h1>
+<h2 class="post-title"><a href="orgmode.html">Org-mode cheat sheet</a></h2>
 <p>
 <a href="https://orgmode.org/manual/">Manual</a> | <a href="https://orgmode.org/orgcard.pdf">RefCard</a> | <a href="https://orgmode.org/worg/org-tutorials/org4beginners.html">Org4Beginners</a> | <a href="https://orgmode.org/worg/org-glossary.html">Glossary</a> | <a href="http://ehneilsen.net/notebook/orgExamples/org-examples.html">Cookbook</a> | <a href="http://thagomizer.com/blog/2017/03/16/five-useful-org-mode-features.html">5 useful features</a>
 </p>
 
-<div id="outline-container-orgd05c397" class="outline-2">
-<h2 id="orgd05c397">Markup: <b>bold</b>, <i>italic</i>, <span class="underline">underlined</span>, <del>strikethrough</del>, , <code>verbatim</code>, <code>code</code></h2>
-<div class="outline-text-2" id="text-orgd05c397">
+<div id="outline-container-org8739e50" class="outline-2">
+<h2 id="org8739e50">Markup: <b>bold</b>, <i>italic</i>, <span class="underline">underlined</span>, <del>strikethrough</del>, , <code>verbatim</code>, <code>code</code></h2>
+<div class="outline-text-2" id="text-org8739e50">
 <ul class="org-ul">
 <li>list
 <ul class="org-ul">
@@ -287,26 +341,26 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </div>
 </div>
 
-<div id="outline-container-org20a2ce3" class="outline-2">
-<h2 id="org20a2ce3">Links<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>: <a href="http://otech.nl">http://otech.nl</a>, <a href="http://otech.nl">OTech</a>, <img src="http://otech.nl/img/otech.jpg" alt="otech.jpg"></h2>
+<div id="outline-container-orgd07de39" class="outline-2">
+<h2 id="orgd07de39">Links<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>: <a href="http://otech.nl">http://otech.nl</a>, <a href="http://otech.nl">OTech</a>, <img src="http://otech.nl/img/otech.jpg" alt="otech.jpg" /></h2>
 </div>
 
-<div id="outline-container-org1fe6a2a" class="outline-2">
-<h2 id="org1fe6a2a">Cycle to do items with S-LEFT and S-RIGHT</h2>
+<div id="outline-container-org82c0aca" class="outline-2">
+<h2 id="org82c0aca">Cycle to do items with S-LEFT and S-RIGHT</h2>
 </div>
 
-<div id="outline-container-orgfcb8fb7" class="outline-2">
-<h2 id="orgfcb8fb7">Table and keys</h2>
-<div class="outline-text-2" id="text-orgfcb8fb7">
-<table>
+<div id="outline-container-org2f56300" class="outline-2">
+<h2 id="org2f56300">Table and keys</h2>
+<div class="outline-text-2" id="text-org2f56300">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 
-<col  class="org-left">
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
@@ -422,9 +476,9 @@ Use <code>docker help</code>, <code>man dockerfile</code> of <code>man docker-&l
 </div>
 </div>
 
-<div id="outline-container-org2a4f57e" class="outline-2">
-<h2 id="org2a4f57e">Literal examples</h2>
-<div class="outline-text-2" id="text-org2a4f57e">
+<div id="outline-container-orge016409" class="outline-2">
+<h2 id="orge016409">Literal examples</h2>
+<div class="outline-text-2" id="text-orge016409">
 <pre class="example">
 Some example from a text file.
 </pre>
@@ -435,13 +489,13 @@ Also available: <code>VERSE</code>, <code>QUOTE</code> and <code>CENTER</code>
 </div>
 </div>
 
-<div id="outline-container-org4cbd4b8" class="outline-2">
-<h2 id="org4cbd4b8">Source code blocks</h2>
-<div class="outline-text-2" id="text-org4cbd4b8">
+<div id="outline-container-org7745ff0" class="outline-2">
+<h2 id="org7745ff0">Source code blocks</h2>
+<div class="outline-text-2" id="text-org7745ff0">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defun</span> <span style="color: #93E0E3;">org-xor</span> <span style="color: #BFEBBF;">(</span>a b<span style="color: #BFEBBF;">)</span>
-  <span style="color: #9FC59F;">"Exclusive or."</span>
-  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> a <span style="color: #D0BF8F;">(</span>not b<span style="color: #D0BF8F;">)</span> b<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: #ffad29; font-weight: bold;">defun</span> <span style="color: #00ede1; font-weight: bold;">org-xor</span> (a b)
+  <span style="color: #e67128;">"Exclusive or."</span>
+  (<span style="color: #ffad29; font-weight: bold;">if</span> a (not b) b))
 </pre>
 </div>
 
@@ -458,12 +512,11 @@ Use <a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-ditaa.h
 
 
 </div>
-</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
-<hr/><div class="post-date">22 Jun 2018</div><h1 class="post-title"><a href="blockchain.html">Blockchain</a></h1>
+</div><h2 class="post-title"><a href="blockchain.html">Blockchain</a></h2>
 
-<div id="outline-container-orgbfdc17d" class="outline-2">
-<h2 id="orgbfdc17d">Key concepts</h2>
-<div class="outline-text-2" id="text-orgbfdc17d">
+<div id="outline-container-org0820e07" class="outline-2">
+<h2 id="org0820e07">Key concepts</h2>
+<div class="outline-text-2" id="text-org0820e07">
 <ul class="org-ul">
 <li>Chain of immutable blocks (though hashes)</li>
 <li>Public, distributed replication (through peer to peer - p2p)</li>
@@ -472,250 +525,16 @@ Use <a href="https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-ditaa.h
 </ul>
 </div>
 </div>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
-<hr/><div class="post-date">28 May 2018</div><h1 class="post-title"><a href="web_scraping.html">Web scraping with Scrapy</a></h1>
-<p>
-You will need three components for web scraping:
-</p>
-
-<ol class="org-ol">
-<li>a tool to GET files from the web,</li>
-<li>a tool to figure out how to process these files, and</li>
-<li>a tool to do the actual processing.</li>
-</ol>
-
-
-<p>
-The one in the middle is where we, the humans, come in. The Chrome developer tools (or whatever they are called in your browser of choice) are our friends here. We can use the `Elements` tab to figure out the structure of a page and the identifiers we need to navigate that structure:
-</p>
-
-<p>
-<a href="./img/chrome_developer_tools.png">Chrome Developer Tools</a>
-</p>
-
-<p>
-You can use <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">Beautiful Soup</a> to automate the processing, combined with <a href="http://docs.python-requests.org/">requests</a> or the default <a href="https://docs.python.org/3/library/urllib.html">urllib</a> to do the file transfers. But <a href="https://scrapy.org">Scrapy</a> provides an all-in-one package.
-</p>
-
-<div id="outline-container-org785d608" class="outline-2">
-<h2 id="org785d608">Scrapy</h2>
-<div class="outline-text-2" id="text-org785d608">
-<p>
-There are two ways to use Scrapy, the hard way and the <i>quick-'n-dirty</i> way:
-</p>
-
-<ul class="org-ul">
-<li>For the <span class="underline">hard way</span> you let Scrapy generate a project for you with the <a href="https://doc.scrapy.org/en/latest/topics/commands.html#creating-projects">startproject</a> command. This will give you all the bells and whistles you need for extensive web-scraping, including items, middleware and pipelines. This will allow you to write a whole nest of related (or unrelated) spiders and deploy them to the cloud. But for most use cases this is far more than is needed, and the easy way is sufficient.</li>
-
-<li>The <span class="underline">easy way</span> is to simply write a spider and run it with the <a href="https://doc.scrapy.org/en/latest/topics/commands.html#runspider">runspider</a> command. This will give you just one, simple spider, but I find that in most cases this is sufficient.</li>
-</ul>
-
-<p>
-The <code>scrapy shell</code> command allows you the research the page and experiment with selectors.
-</p>
-
-<p>
-The <code>scrapy view</code> command (both in the Scrapy shell and from the command line as a parameter to the <code>scrapy</code> command) opens a page in your browser, as seen by Scrapy. This prevents differences between how your browser GETs a page and how Scrape sees it.
-</p>
-</div>
-</div>
-<div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div>
-<hr/><div class="post-date">03 Mar 2018</div><h1 class="post-title"><a href="datascience.html">Data Science with Pandas</a></h1>
-<p>
-<a href="https://pandas.pydata.org/">Home</a> | <a href="http://ehneilsen.net/notebook/pandasExamples/pandas_examples.html">Cookbook</a> | <a href="https://jakevdp.github.io/PythonDataScienceHandbook">Handbook</a>
-</p>
-
-<p>
-Data science is learning from data in order to gain useful predictions and insights and consists of the steps below<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>:
-</p>
-
-
-<ol class="org-ol">
-<li><span class="underline">Ask</span> an interesting question:
-<ol class="org-ol">
-<li>What is the scientific <b>goal</b>?</li>
-<li>What would you do if you had all the <b>data</b>?</li>
-<li>What do you want to <b>predict</b> or <b>estimate</b>?</li>
-</ol></li>
-<li><span class="underline">GET</span> the data:
-<ol class="org-ol">
-<li>How were the data <b>sampled</b>?</li>
-<li>Which data are <b>relevant</b>?</li>
-<li>Are there <b>privacy</b> or <b>copyright</b> issues?</li>
-</ol></li>
-<li><span class="underline">EXPLORE</span> the data:
-<ol class="org-ol">
-<li><b>Plot</b> the data.</li>
-<li>Are there <b>anomalies</b>?</li>
-<li>Are there <b>patterns</b>?</li>
-</ol></li>
-<li><span class="underline">MODEL</span> the data:
-<ol class="org-ol">
-<li><b>Build</b> a model.</li>
-<li><b>Fit</b> the model.</li>
-<li><b>Validate</b> the model.</li>
-</ol></li>
-<li><span class="underline">Communicate</span> and <b>visualize</b> the results:
-<ol class="org-ol">
-<li>What did we <b>learn</b>?</li>
-<li>Do the results make <b>sense</b>?</li>
-<li>Can we tell a <b>story</b>?</li>
-</ol></li>
-</ol>
-
-<p>
-Data science can roughly be split into data engineering and data analysis. Data <i>engineering</i> consists of gathering and preparing data for analysis by <a href="web_scraping.html">scraping</a> cleaning, correcting, integrating, re-ordering, scaling, converting, etc. In other words, data engineers transform data into formats that data scientists can analyze. For a good introduction to data <i>analysis</i>, sign up for the free <a href="https://eu.udacity.com/course/intro-to-data-analysis--ud170">Udacity course</a>.
-</p>
-
-<div id="outline-container-orgc117143" class="outline-2">
-<h2 id="orgc117143">Python packages</h2>
-<div class="outline-text-2" id="text-orgc117143">
-<p>
-The <a href="https://pydata.org/downloads.html">PyData</a> Python Open Data Science Stack:
-</p>
-
-<ul class="org-ul">
-<li><a href="http://www.numpy.org/">numpy</a> as <code>np</code>
-<ul class="org-ul">
-<li><code>axis=0</code> means <i>columns</i> and <code>axis=1</code> means <i>rows</i></li>
-</ul></li>
-<li><a href="http://www.scipy.org/">scipy</a></li>
-<li><a href="http://scikit-learn.org/stable/documentation.html">sklearn</a>
-<ul class="org-ul">
-<li><code>preprocessing</code></li>
-<li><code>linear_model</code></li>
-<li><code>cross_validation</code></li>
-<li><code>confusion_matrix</code></li>
-<li><code>svm</code></li>
-<li><code>multiclass</code></li>
-</ul></li>
-<li><a href="https://pandas.pydata.org">pandas</a> as <code>pd</code> <br>
-(<i>The</i> framework for data engineering, although others exist, like <a href="http://bubbles.databrewery.org/">Bubbles</a>.)</li>
-<li><a href="https://www.bonobo-project.org/">bobobo</a> for ETL</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org69ef334" class="outline-2">
-<h2 id="org69ef334">Preprocessing</h2>
-<div class="outline-text-2" id="text-org69ef334">
-<ul class="org-ul">
-<li>binarization</li>
-<li>mean removal</li>
-<li>scaling</li>
-<li>normalization</li>
-<li>label encoding</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org00d6182" class="outline-2">
-<h2 id="org00d6182">Machine learning</h2>
-<div class="outline-text-2" id="text-org00d6182">
-<p>
-<a href="https://en.wikipedia.org/wiki/Portal:Machine_learning">Wikipedia Portal</a>
-</p>
-</div>
-
-<div id="outline-container-orgab41001" class="outline-3">
-<h3 id="orgab41001">Applications of AI</h3>
-<div class="outline-text-3" id="text-orgab41001">
-<ul class="org-ul">
-<li>Computer Vision (CV)</li>
-<li>Natural Language Processing (NLP)</li>
-<li>Speech Recognition</li>
-<li>Expert Systems (rule based)</li>
-<li>Games</li>
-<li>Robotics (<i>all of the above</i>)</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org78e19eb" class="outline-3">
-<h3 id="org78e19eb">Branches of AI</h3>
-<div class="outline-text-3" id="text-org78e19eb">
-<ul class="org-ul">
-<li>Machine learning and pattern recognition</li>
-<li>Logic-based AI</li>
-<li>Seach</li>
-<li>Knowledge reresentation</li>
-<li>Planning</li>
-<li>Heuristics</li>
-<li>Genetic Programming</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org513ba3b" class="outline-3">
-<h3 id="org513ba3b">Types of models</h3>
-<div class="outline-text-3" id="text-org513ba3b">
-<ul class="org-ul">
-<li>analytical</li>
-<li>learned
-<ul class="org-ul">
-<li>supervised: uses labeled training data</li>
-<li>unsupervised: without labeled training data</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org5e95dc0" class="outline-3">
-<h3 id="org5e95dc0">Techniques</h3>
-<div class="outline-text-3" id="text-org5e95dc0">
-<ul class="org-ul">
-<li><p>
-classification: arrange data into a a fixed numer of distinct categories
-</p>
-<ul class="org-ul">
-<li>if the number of samples if insufficient, the algorithm will <b>overfit</b>  the training data</li>
-</ul>
-<p>
-Classifiers:
-</p>
-<ul class="org-ul">
-<li>logistic regression: not actually a classifier, but often used as such</li>
-<li>Bayes theorem: describes the probability of an event occurring based on different conditions related to this event (<i>naïve Bayes</i>  assumes these conditions are independent of each other)</li>
-<li>Support Vector Machine (SVM): defines a separating hyperplane between classes (the best hyperplane maximizes the distance to each point)</li>
-</ul></li>
-<li>regression: explain the relationship between independent / input / predictor variables and dependent / output variables</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org0dcdb8a" class="outline-3">
-<h3 id="org0dcdb8a">Metrics</h3>
-<div class="outline-text-3" id="text-org0dcdb8a">
-<ul class="org-ul">
-<li>Confusion matrix: shows the performance of a classifier in terms of true/false positives/negatives</li>
-<li><a href="https://en.wikipedia.org/wiki/F1_score">F1 score</a>: harmonic average of&#x2026;
-<ul class="org-ul">
-<li>precision: #true positives / #total positives</li>
-<li>recall: #true positives / #total truths</li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org2243c69" class="outline-3">
-<h3 id="org2243c69">Concepts</h3>
-<div class="outline-text-3" id="text-org2243c69">
-<ul class="org-ul">
-<li>Cognitive modeling: simulating the human thinking process</li>
-<li>Deep learning: feature extraction and transformation using using a cascade of multiple layers (hence <i>deep</i>) of nonlinear processing units (e.g. neural nets, belief networks), each using the output from the previous layer as input.</li>
-<li>Rational agent: does the 'right' thing in a given context, using sensors, actuators and an inference engine</li>
-<li>General Problem Solver (GPS)</li>
-<li>Cross validation: divide your data set into <i>training</i> and <i>test</i> subsets</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><a href="https://cs109.github.io">https://cs109.github.io</a></div></div>
-
-
-</div>
-</div><div class="taglist"><a href="tags.html">Tags:</a> <a href="tag-technote.html">technote</a> </div><div id="archive">
+<div id="archive">
 <a href="archive.html">Other posts</a>
-</div>
+</div></div>
+<div id="postamble" class="status"><hr/>
+<footer align="center"><i class="fas fa-map-marked"></i> <a href="https://www.google.nl/maps/place/Groningen/">Groningen</a>
+  | <i class="fas fa-envelope-square"></i> <a href="mailto:steets@otech.nl">steets@otech.nl</a>
+  | <i class="fas fa-phone-square"></i> <a href="tel:+31613559043">+31 6 13 55 90 43</a>
+  | <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/rsteetskamp/">rsteetskamp</a>
+  | <i class="fab fa-github"></i> <a href="https://github.com/otech-nl/otech-nl.github.io">otech-nl</a>
+</footer>
 </div>
 </body>
 </html>

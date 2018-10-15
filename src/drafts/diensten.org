@@ -1,11 +1,14 @@
 #+title: Diensten
 #+date: <2018-09-27 10:10>
-#+filetags: diensten
+#+filetags: page otech diensten
 #+STARTUP: showall indent
+
+Ik hou van afwisselend werk. Daarom kan ik u een grote diversiteit van diensten aanbieden:
 
 ** Projecten
 
-Van ontwikkelaar
+
+
 ** Trainingen
 
 ** Ondersteuning van juristen

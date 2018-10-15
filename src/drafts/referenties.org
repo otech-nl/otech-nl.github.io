@@ -1,28 +1,32 @@
 #+title: Referenties
 #+date: <2018-09-27 10:10>
-#+filetags: referenties
+#+filetags: page otech referenties
 #+STARTUP: showall indent
 
 ** Partners
 
-| [[files/SBS.jpg]] | [[files/SEY.jpg]] | [[files/probatius.png]] |
-| [[files/metix.png]] |               |                     |
+#+ATTR_HTML: :width:100%
+| [[./files/SBS.jpg]]   | [[./files/probatius.png]] |
+| [[./files/metix.png]] | [[./files/SEY.jpg]]       |
 
 - Via [[http://softwareborg.nl][Softwareborg]] voer ik broncode-inspecties uit voor ESCROW-deponeringen.
 - Via [[https://stichtingempoweryourself.com/][Stichting Empower Yourself]] geef ik omscholingscursussen voor mensen met een afstand tot de arbeidsmarkt.
-- Via [[http://probatius.nl][Probatius]] biedt ik ondersteuning aan juristen door het vastleggen van (digitaal) bewijs en het inspecteren van broncode.
+- Via [[http://probatius.nl][Probatius]] bied ik ondersteuning aan juristen door het vastleggen van (digitaal) bewijs en het inspecteren van broncode.
 - Via [[http://metix.nl][Metix]] voer ik automatiseringsprojecten in het Openbaar Vervoer uit.
+
+-------------------------------
 
 ** Opdrachtgevers
 
-| [[files/inlia.png]]   | [[files/flal.png]]  | [[files/sobercare.png]] |
-| [[files/bhosted.png]] | [[files/ovbgd.jpg]] | [[files/groningen.png]] |
-| [[files/stad.jpg]]    |                 |                     |
+#+ATTR_HTML: :width:100%
+| [[./files/inlia.png]]   | [[./files/flal.png]]      | [[./files/sobercare.png]] |
+| [[./files/bhosted.png]] | [[./files/groningen.png]] | [[./files/stad.jpg]]      |
+| [[./files/ovbgd.jpg]]   |                       |                       |
 
 - Voor [[http://www.inlia.nl/nl][Stichting INLIA]] heb ik een cliëntregistratiesysteem ontwikkeld.
-- Voor de [[http://www.flal.nl/3/][Friese Langeafstandslopers]] heb ik een systeem ontwikkeld voor leden- en tochtregistratie.
+- Voor de [[http://www.flal.nl/][Friese Langeafstandslopers]] heb ik een systeem ontwikkeld voor leden- en tochtregistratie.
 - Voor [[http://www.sobercare.nl/][SoberCare]] heb ik een rapportagesysteem ontwikkeld.
 - Voor [[https://www.bhosted.nl/][bHosted]] heb ik een /Drop Catch Service/ ontwikkeld.
-- Voor het [[http://ovbgd.nl][OV-bureau Groningen Drenthe]] het ik de Europese aanbesteding en het aansluitende project van een DRIS-systeem voorbereid en begeleid.
+- Voor het [[http://ovbgd.nl][OV-bureau Groningen Drenthe]] heb ik de Europese aanbesteding en het aansluitende project van een DRIS-systeem voorbereid en begeleid.
 - Voor de [[https://www.provinciegroningen.nl][Provincie Groningen]] heb ik het ontwerp en de realisatie van MMRIs begeleid.
 - Voor de [[https://gemeente.groningen.nl/][Gemeente Groningen]] heb ik de aanbestediing en uitvoering van DRIS P+R Hoogkerk begeleid.
